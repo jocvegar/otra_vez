@@ -3,16 +3,12 @@ body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
-/*body {
-  padding-top: 4.35rem;
-}*/
-
 @media (max-width: 768px) {
   .offcanvas-collapse {
     position: fixed;
     top: 4.35rem; /* Height of navbar */
     bottom: 0;
-    left: 100%;
+    right: 100%;
     width: 100%;
     padding-right: 1rem;
     padding-left: 1rem;
@@ -23,7 +19,7 @@ body {
   }
   .offcanvas-collapse.open {
     visibility: visible;
-    transform: translateX(-100%);
+    transform: translateX(100%);
   }
 }
 

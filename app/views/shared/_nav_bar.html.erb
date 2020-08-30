@@ -1,35 +1,41 @@
 <nav class="navbar navbar-expand-lg py-3 navbar-light justify-content-center">
   <div class="container-fluid">
     <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-    <a class="navbar-brand d-none d-lg-inline-block" href="#">
+    <button class="navbar-toggler p-0 border-0" type="button"
+      data-toggle="offcanvas">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand mr-0 d-none d-lg-inline-block" href="#">
       <%= image_tag(asset_path('logo.png'), height: 'auto', width: '160') %>
     </a>
     <a class="navbar-brand-two mx-auto d-lg-none d-inline-block">
       <%= image_tag(asset_path('logo.png'), height: 'auto', width: '160') %>
     </a>
-    <button class="navbar-toggler p-0 border-0" type="button"
-      data-toggle="offcanvas">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+    <div class="navbar-collapse offcanvas-collapse"
+      id="navbarsExampleDefault" style="margin-left: -5rem;">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 h4">
         <li class="nav-item active">
-          <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+          <a class="nav-link" aria-current="page" href="#">HOMBRE</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link" href="#">MUJER</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-expanded="false">Settings</a>
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-expanded="false">OTROS</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">WACHOS</a></li>
+            <li><a class="dropdown-item" href="#">PAILAS</a></li>
+            <li><a class="dropdown-item" href="#">ESTA</a></li>
           </ul>
         </li>
       </ul>
-     ALGO!
     </div>
+    <%= link_to "#" do %>
+      <span class="pl-md-5">
+          <svg xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          viewBox="0 0 24 24" width="36" height="36"><path class="heroicon-ui" d="M17 16a3 3 0 1 1-2.83 2H9.83a3 3 0 1 1-5.62-.1A3 3 0 0 1 5 12V4H3a1 1 0 1 1 0-2h3a1 1 0 0 1 1 1v1h14a1 1 0 0 1 .9 1.45l-4 8a1 1 0 0 1-.9.55H5a1 1 0 0 0 0 2h12zM7 12h9.38l3-6H7v6zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+      </span>
+    <% end %>
   </div>
 </nav>
 
