@@ -5,10 +5,10 @@
       data-toggle="offcanvas">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand mr-0 d-none d-lg-inline-block" href="#">
+    <a class="navbar-brand mr-0 d-none d-lg-inline-block" href="/">
       <%= image_tag(asset_path('logo.png'), height: 'auto', width: '160') %>
     </a>
-    <a class="navbar-brand-two mx-auto d-lg-none d-inline-block">
+    <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="/">
       <%= image_tag(asset_path('logo.png'), height: 'auto', width: '160') %>
     </a>
     <div class="navbar-collapse offcanvas-collapse"
@@ -30,11 +30,8 @@
         </li>
       </ul>
     </div>
-    <%= link_to "#" do %>
-      <span class="pl-md-5">
-          <svg xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          viewBox="0 0 24 24" width="36" height="36"><path class="heroicon-ui" d="M17 16a3 3 0 1 1-2.83 2H9.83a3 3 0 1 1-5.62-.1A3 3 0 0 1 5 12V4H3a1 1 0 1 1 0-2h3a1 1 0 0 1 1 1v1h14a1 1 0 0 1 .9 1.45l-4 8a1 1 0 0 1-.9.55H5a1 1 0 0 0 0 2h12zM7 12h9.38l3-6H7v6zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
-      </span>
+    <%= link_to shopping_carts_path, id: "shopping_cart" do %>
+      <%= render "shared/cart" %>
     <% end %>
   </div>
 </nav>
