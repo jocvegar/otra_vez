@@ -26,9 +26,8 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
-
     respond_to do |format|
-      if @order_item.save
+      if @order.save
         session[:order_id] = @order.id
         format.html { redirect_to @order_item, notice: 'Order item was successfully created.' }
         format.json { render :show, status: :created, location: @order_item }
