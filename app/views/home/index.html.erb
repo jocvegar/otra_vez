@@ -1,4 +1,4 @@
-<section class="bgimage">
+<section id="hero" class="div-image bgimage">
 	<div class="container h-100">
 		<div class="row align-items-center h-100">
 			<div class="col-md-4 offset-md-8 col-12 text-center">
@@ -8,40 +8,87 @@
 	</div>
 </section>
 
-<section class="container products">
-	session[:order_id]: <%= session[:order_id] %>
-	<h1>Productos</h1>
-	<% @products.each do |product| %>
+<section id="main-section">
+	<div class="container my-2">
+		<div class="row">
+			<div class="col-12 col-md-6 my-2">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<div class="d-flex flex-column align-items-center justify-content-end div-image chavo">
+							<button class="btn btn-light btn-lg mb-4 px-4"
+								type="button">
+								HOMBRE
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12" style="margin:0.75rem 0">
+						<div class="d-flex flex-column align-items-center justify-content-end div-image wacho">
+							<button class="btn btn-light btn-lg mb-4 px-4"
+								type="button">
+								OTROS
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 my-2">
+				<div class="d-flex flex-column align-items-center justify-content-end div-image chava">
+					<button class="btn btn-light btn-lg mb-4 px-4"
+						type="button">
+						MUJER
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="container products my-5">
+	<!-- session[:order_id]: <%#= session[:order_id] %> -->
+	<!-- <h1>Productos</h1>
+	<%# @products.each do |product| %>
 		<div class="card bg-light mb-3">
 			<div class="card-body">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3><%= product.title %></h3>
+						<h3><%#= product.title %></h3>
 					</div>
 					<div class="col-sm-4">
-						<%= form_for(@order_item, remote: true) do |f| %>
-							<%= f.hidden_field :product_id, value: product.id %>
-							<h5><%= product.price %></h5>
+						<%#= form_for(@order_item, remote: true) do |f| %>
+							<%#= f.hidden_field :product_id, value: product.id %>
+							<h5><%#= product.price %></h5>
 							<div class="from-group">
-								<%= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>
+								<%#= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>
 							</div>
-							<%= f.submit "Add" %>
-						<% end %>
+							<%#= f.submit "Add" %>
+						<%# end %>
 					</div>
 				</div>
 			</div>
 		</div>
-	<% end %>
+	<%# end %> -->
 </section>
 
 <style>
 .bgimage {
-	width:100%;
 	height:500px;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
 		url(<%= image_path('banner.jpg') %>);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size:cover;
+}
+
+.chava {
+	height: 95vh;
+	background-image: url(<%= image_path('chava.jpg') %>);
+}
+
+.chavo {
+	height: 50vh;
+	background-image: url(<%= image_path('chavo.jpg') %>);
+}
+.wacho {
+	height: 42vh;
+	background-image: url(<%= image_path('wacho.jpg') %>);
 }
 </style>
