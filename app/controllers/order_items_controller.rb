@@ -62,7 +62,6 @@ class OrderItemsController < ApplicationController
   # DELETE /order_items/1
   # DELETE /order_items/1.json
   def destroy
-    respond_to do |format|
     # @order_item.destroy
     # respond_to do |format|
     #   format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
@@ -73,10 +72,10 @@ class OrderItemsController < ApplicationController
       @order_item.destroy
       @order_items = @order.order_items
 
-
-      format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
-      # format.json { head :no_content }
-      format.js
+      respond_to do |format|
+        format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
+        # format.json { head :no_content }
+        format.js
     end
   end
 
