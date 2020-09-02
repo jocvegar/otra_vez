@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("custom/pwa")
 
 import '../stylesheets/application.scss'
 import '@fortawesome/fontawesome-free/js/all.min.js'
