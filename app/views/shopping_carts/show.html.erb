@@ -1,14 +1,16 @@
-<% if !@order_items.nil?# && @order_items.errors.any? %>
+<% if !@order_items.nil? &&
+	@order_items.map { |order_item| order_item.errors.full_messages }
+	.flatten.any? %>
 	<ul>
-		<%# @order_items.errors.full_messages.each do |msg| %>
-			<li><%#= msg %></li>
-		<%# end %>
+		<% @order_items.map(&:errors).each do |error| %>
+			<li><%= error.full_messages %></li>
+		<% end %>
 	</ul>
 <% end %>
 
 <% if @order_items.size > 0 %>
 	<% @order_items.each do |item| %>
-		<div class="card bg-light mb-3">
+		<div class="card bg-light mb-3" id="order_item_<%= item.id %>">
 			<div class="card-body">
 				<div class="row">
 					<div class="col-sm-8">

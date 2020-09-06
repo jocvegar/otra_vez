@@ -1,2 +1,3 @@
 document.getElementById("shopping_cart").innerHTML = "";
 document.querySelector('#shopping_cart').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render "shared/cart") %>');
+$('#order_item_<%= @order_item.id %>').slideUp();

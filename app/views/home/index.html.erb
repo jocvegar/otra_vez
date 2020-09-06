@@ -47,28 +47,28 @@
 
 <section class="container products my-5">
 	<!-- session[:order_id]: <%#= session[:order_id] %> -->
-	<!-- <h1>Productos</h1>
-	<%# @products.each do |product| %>
+	<h1>Productos</h1>
+	<% @products.each do |product| %>
 		<div class="card bg-light mb-3">
 			<div class="card-body">
 				<div class="row">
 					<div class="col-sm-8">
-						<h3><%#= product.title %></h3>
+						<h3><%= product.title %></h3>
 					</div>
 					<div class="col-sm-4">
-						<%#= form_for(@order_item, remote: true) do |f| %>
-							<%#= f.hidden_field :product_id, value: product.id %>
-							<h5><%#= product.price %></h5>
+						<%= form_for(@order_item, remote: true) do |f| %>
+							<%= f.hidden_field :product_id, value: product.id %>
+							<h5><%= product.price %></h5>
 							<div class="from-group">
-								<%#= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>
+								<%= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>
 							</div>
-							<%#= f.submit "Add" %>
-						<%# end %>
+							<%= f.submit "Add" %>
+						<% end %>
 					</div>
 				</div>
 			</div>
 		</div>
-	<%# end %> -->
+	<% end %>
 </section>
 
 <style>

@@ -1,28 +1,20 @@
 class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
 
-  # GET /order_items
-  # GET /order_items.json
   def index
     @order_items = OrderItem.all
   end
 
-  # GET /order_items/1
-  # GET /order_items/1.json
   def show
   end
 
-  # GET /order_items/new
   def new
     @order_item = OrderItem.new
   end
 
-  # GET /order_items/1/edit
   def edit
   end
 
-  # POST /order_items
-  # POST /order_items.json
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
@@ -31,17 +23,13 @@ class OrderItemsController < ApplicationController
         session[:order_id] = @order.id
         format.html { redirect_to @order_item, notice: 'Order item was successfully created.' }
         format.js
-        # format.json { render :show, status: :created, location: @order_item }
       else
         format.html { render :new }
         format.js
-        # format.json { render json: @order_item.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /order_items/1
-  # PATCH/PUT /order_items/1.json
   def update
     # respond_to do |format|
     #   if @order_item.update(order_item_params)
@@ -59,8 +47,6 @@ class OrderItemsController < ApplicationController
     @order_items = @order.order_items
   end
 
-  # DELETE /order_items/1
-  # DELETE /order_items/1.json
   def destroy
     # @order_item.destroy
     # respond_to do |format|
@@ -74,7 +60,6 @@ class OrderItemsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to order_items_url, notice: 'Order item was successfully destroyed.' }
-        # format.json { head :no_content }
         format.js
     end
   end
