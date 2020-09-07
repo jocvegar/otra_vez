@@ -52,17 +52,25 @@
 		<div class="card bg-light mb-3">
 			<div class="card-body">
 				<div class="row">
-					<div class="col-sm-8">
+					<div class="col-sm-6 col-12">
 						<h3><%= product.title %></h3>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-sm-6 col-12">
 						<%= form_for(@order_item, remote: true) do |f| %>
 							<%= f.hidden_field :product_id, value: product.id %>
-							<h5><%= product.price %></h5>
-							<div class="from-group">
-								<%= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>
+							<div class="row">
+								<div class="col-4">
+									<h5><%= product.price %></h5>
+								</div>
+								<div class="col-4">
+									<div class="from-group">
+										<%= f.number_field :quantity, value: 1, min: 1, class: 'form-control' %>
+									</div>
+								</div>
+								<div class="col-4">
+									<%= f.submit "Add" %>
+								</div>
 							</div>
-							<%= f.submit "Add" %>
 						<% end %>
 					</div>
 				</div>
