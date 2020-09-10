@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("jquery")
 require("channels")
 require("custom/pwa")
+require("custom/alert_message")
 
 import '../stylesheets/application.scss'
 import '@fortawesome/fontawesome-free/js/all.min.js'
