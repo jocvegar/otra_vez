@@ -4,4 +4,9 @@
 	// document.getElementById("shopping_cart").innerHTML = "";
 	// document.getElementById('shopping_cart').insertAdjacentHTML('afterbegin', '<%#= j render("shared/cart") %>');
 	document.getElementById("shopping_cart").innerHTML = "<%= j render('shared/cart') %>";
+	var addedToCartModal = new bootstrap.Modal(document.getElementById('addedToCart'));
+	addedToCartModal.show();
+	setTimeout(function(){
+	  addedToCartModal.hide();
+	}, 1500);
 <% end %>
