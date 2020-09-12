@@ -1,0 +1,16 @@
+<div class="row mt-5">
+	<div class="col-md-6 col-12">
+		<%= image_tag @product.main_image,
+			class: "mx-auto d-block", style: 'height:10vw;width:10vw' if @product.main_image.attached? %>
+
+	</div>
+	<div class="col-md-6 col-12">
+		<h4><%= @product.title %></h4>
+		<p><%= @product.price %></p>
+	</div>
+</div>
+
+<hr>
+
+<%= link_to 'Edit', edit_admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>
