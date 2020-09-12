@@ -3,5 +3,5 @@ class Product < ApplicationRecord
 	friendly_id :title, use: :slugged
 
 	has_many :order_items
-	has_many_attached :images
+	has_one_attached :main_image
 end

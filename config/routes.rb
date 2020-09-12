@@ -5,4 +5,9 @@ Rails.application.routes.draw do
 	get '/service-worker.js' => "service_worker#service_worker"
 	get '/manifest.json' => "service_worker#manifest"
 	get '/offline.html' => "service_worker#offline"
+
+	devise_for :admins
+	namespace :admin do
+		get '/' => 'home#index'
+	end
 end
