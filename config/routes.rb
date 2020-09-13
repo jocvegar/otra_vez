@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 	 get 'test/index'
+
 	root 'home#index'
 	resources :order_items
 	resource :shopping_carts
@@ -7,9 +7,16 @@ Rails.application.routes.draw do
 	get '/manifest.json' => "service_worker#manifest"
 	get '/offline.html' => "service_worker#offline"
 
-	devise_for :admins
+	devise_for :admins, controllers: {
+		sessions: 'admins/sessions'
+	}
+
 	namespace :admin do
 		get '/' => 'home#index'
 		resources :products
 	end
+
+
+
+	get 'test/index'
 end
