@@ -1,25 +1,38 @@
-<h2>Change your password</h2>
+<div id="admin-devise">
+  <h3 class="py-3 text-center">Cambiame</h3>
+  <div class="form-signin">
+    <%= form_for(resource, as: resource_name,
+      url: password_path(resource_name), html: { method: :put }) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "admins/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+      <%= render "admins/shared/error_messages", resource: resource %>
+      <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <div class="form-label-group">
+        <%= f.password_field :password, autofocus: true,
+          autocomplete: "new-password",
+          id: "inputPassword", class: "form-control",
+          placeholder: "Nueva Contraseña" %>
+          <% if @minimum_password_length %>
+            <small>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            </small>
+          <% end %>
+        <label for="inputPassword">Nueva Contraseña</label>
+      </div>
+
+      <div class="form-label-group">
+        <%= f.password_field :password_confirmation, autofocus: true,
+          autocomplete: "new-password",
+          id: "confirmInputPassword", class: "form-control",
+          placeholder: "Confirmar Contraseña" %>
+        <label for="confirmInputPassword">Confirmar Contraseña</label>
+      </div>
+
+      <%= f.submit "Cambiar", class: "btn btn-lg btn-dark btn-block" %>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="text-center mt-5">
+      <%= render "admins/shared/links" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+</div>

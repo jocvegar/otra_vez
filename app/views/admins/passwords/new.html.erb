@@ -1,16 +1,25 @@
-<h2>Forgot your password?NISHTA</h2>
+<div id="admin-devise">
+	<h3 class="py-3 text-center">Apunta Tu Password</h3>
+  	<div class="form-signin">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "admins/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name,
+      url: password_path(resource_name), html: { method: :post }) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= render "admins/shared/error_messages", resource: resource %>
+
+      <div class="form-label-group">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",
+          id: "inputEmail", class: "form-control",
+          placeholder: "chelon@chele.com" %>
+        <label for="inputEmail">chelon@chele.com</label>
+      </div>
+
+      <%= f.submit "Mandar Instructions",
+      	class: "btn btn-lg btn-dark btn-block" %>
+    <% end %>
+
+    <div class="text-center mt-5">
+      <%= render "admins/shared/links" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+</div>
