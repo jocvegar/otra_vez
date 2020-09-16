@@ -10,6 +10,7 @@ require("jquery")
 require("channels")
 require("custom/pwa")
 require("custom/alert_message")
+require("custom/splide")
 
 import '../stylesheets/application.scss'
 import '@fortawesome/fontawesome-free/js/all.min.js'

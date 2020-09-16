@@ -916,6 +916,11 @@
     webpack-cli "^3.3.10"
     webpack-sources "^1.4.3"
 
+"@splidejs/splide@^2.4.14":
+  version "2.4.14"
+  resolved "https://registry.yarnpkg.com/@splidejs/splide/-/splide-2.4.14.tgz#5b94cbe28a5428850c20865e946ea85c6183b48e"
+  integrity sha512-TSw8lH0iuWYbcRbOx2J9CMXmKIjbQMBTMkIufUdDqV2q4/7cgcOwy0EkCfKst72SN1jnsj/LurGoOPFocUTq4Q==
+
 "@types/glob@^7.1.1":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
