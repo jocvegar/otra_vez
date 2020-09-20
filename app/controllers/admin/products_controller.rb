@@ -3,7 +3,7 @@ class Admin::ProductsController < ApplicationController
   layout "admin"
 
   def index
-    @products = Product.all
+    @products = Product.existing.all.order("created_at DESC")
   end
 
   def show
@@ -21,7 +21,7 @@ class Admin::ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to admin_product_path(@product), notice: 'Product was successfully created.' }
+        format.html { redirect_to admin_products_path, notice: 'Salvado' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class Admin::ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(admin_product_params)
-        format.html { redirect_to admin_product_path(@product), notice: 'Product was successfully updated.' }
+        format.html { redirect_to admin_products_path, notice: 'Producto modificado' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }

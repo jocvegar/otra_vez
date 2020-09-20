@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 	namespace :admin do
 		get '/' => 'home#index'
 		resources :products
+		resources :soldout_products, only: [:index]
 	end
 
 	get 'test/index'

@@ -1,0 +1,47 @@
+<%= render 'admin/products/navigation_tabs', active: "sold_out" %>
+
+<div id="soldout-products" class="container">
+	<div class="table-responsive">
+	  <h4 class="mb-5 text-muted">Producto Sold Out</h4>
+	  <table
+	  	data-toggle="table"
+	  	class="table table-hover align-middle text-muted">
+	    <thead>
+	      <tr>
+	        <th data-sortable="true" scope="col">#</th>
+	        <th scope="col">Foto</th>
+	        <th data-sortable="true" scope="col">Nombre</th>
+	        <th data-sortable="true" scope="col">Salio de Inv</th>
+	        <th data-sortable="true" scope="col">Categoría</th>
+	        <th data-sortable="true" scope="col">Tipo</th>
+	        <th scope="col">Editar</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <% @products.each_with_index do |product, i| %>
+	        <tr>
+	          <th scope="row"><%= i + 1 %></th>
+	          <td>
+	            <% if product.main_image.attached? %>
+	              <%= image_tag product.main_image,
+	                class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+	            <% else %>
+	              <%= image_tag 'otra_vez_blanco.jpg',
+	                class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+	            <% end %>
+	          </td>
+	          <td><%= product.title %></td>
+	          <td><%= product.updated_at.strftime("%A, %b %d") %></td>
+	          <td><%= product.category&.humanize %></td>
+	          <td><%= product.option&.humanize %></td>
+	          <td>
+	            <%= link_to edit_admin_product_path(id: product.slug) do %>
+	              <i class="text-muted fas fa-cog"></i>
+	            <% end %>
+	          </td>
+	        </tr>
+	      <% end %>
+	    </tbody>
+	  </table>
+	</div>
+</div>

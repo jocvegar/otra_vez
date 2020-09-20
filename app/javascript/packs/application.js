@@ -11,10 +11,13 @@ require("channels")
 require("custom/pwa")
 require("custom/alert_message")
 require("custom/splide")
+require("bootstrap-table")
 
 import '../stylesheets/application.scss'
 import '@fortawesome/fontawesome-free/js/all.min.js'
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import 'bootstrap-table/dist/bootstrap-table.min.css';
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
