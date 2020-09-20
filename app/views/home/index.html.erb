@@ -15,30 +15,24 @@
 				<div class="row">
 					<div class="col-12 mb-2">
 						<div class="d-flex flex-column align-items-center justify-content-end div-image chavo">
-							<button class="btn btn-light mb-4 px-4"
-								type="button">
-								HOMBRE
-							</button>
+							<%= link_to "HOMBRE",categorias_path(cat: "hombre"),
+								class: "btn btn-light mb-4 px-4" %>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-12" style="margin:0.75rem 0">
 						<div class="d-flex flex-column align-items-center justify-content-end div-image wacho">
-							<button class="btn btn-light mb-4 px-4"
-								type="button">
-								OTROS
-							</button>
+							<%= link_to "OTRO",categorias_path(cat: "otro"),
+								class: "btn btn-light mb-4 px-4" %>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-12 col-md-6 my-2">
 				<div class="d-flex flex-column align-items-center justify-content-end div-image chava">
-					<button class="btn btn-light mb-4 px-4"
-						type="button">
-						MUJER
-					</button>
+					<%= link_to "MUJER",categorias_path(cat: "mujer"),
+						class: "btn btn-light mb-4 px-4" %>
 				</div>
 			</div>
 		</div>
@@ -88,8 +82,14 @@
 					<% @products.first(8).each do |product| %>
 						<li class="splide__slide text-center">
 							<div class="splide__slide__container mb-2">
-								<img class="img-fluid1" height="280" width="280"
-									data-splide-lazy="<%= image_path('otra_vez_blanco.jpg') %>">
+								<% if product.main_image.attached? %>
+								  <%= image_tag product.main_image,
+								    class: "img-fluid", style: 'height:200px;width:auto' %>
+								<% else %>
+								  <%= image_tag 'otra_vez_blanco.jpg',
+								    class: "img-fluid", style: 'height:200px;width:auto' %>
+								<% end %>
+
 								<h5 class="text-muted"><%= product.title %></h5>
 								<p>Lps. <%= product.price %></p>
 

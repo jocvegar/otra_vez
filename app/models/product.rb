@@ -7,6 +7,9 @@ class Product < ApplicationRecord
 
 	scope :existing, lambda { where("quantity > ?", 0) }
 	scope :sold_out, lambda { where("quantity <= ?", 0) }
+	scope :hombre, lambda { where("category = ?", "hombre") }
+	scope :mujer, lambda { where("category = ?", "mujer") }
+	scope :otro, lambda { where("category = ?", "otro") }
 
 	def should_generate_new_friendly_id?
 		title_changed? || super

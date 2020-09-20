@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 		sessions: 'admins/sessions'
 	}
 
+	resources :categorias
+
 	namespace :admin do
 		get '/' => 'home#index'
 		resources :products

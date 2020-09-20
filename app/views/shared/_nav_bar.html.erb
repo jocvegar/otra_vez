@@ -15,16 +15,18 @@
       id="navbarsExampleDefault" style="margin-left: 0rem;">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0 h4">
         <li class="nav-item active">
-          <a class="nav-link" aria-current="page" href="#">HOMBRE</a>
+          <%= link_to "HOMBRE",categorias_path(cat: "hombre"), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">MUJER</a>
+          <%= link_to "MUJER",categorias_path(cat: "mujer"), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="masMenu"
             data-toggle="dropdown" aria-expanded="false">OTROS</a>
           <ul class="dropdown-menu" aria-labelledby="masMenu">
-            <li><a class="dropdown-item" href="#">WACHOS</a></li>
+            <li>
+              <%= link_to "OTROS",categorias_path(cat: "otro"), class: "dropdown-item" %>
+            <li>
             <li><a class="dropdown-item" href="#">PAILAS</a></li>
             <li><a class="dropdown-item" href="#">ALGO MAS</a></li>
           </ul>
