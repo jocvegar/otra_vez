@@ -1,30 +1,58 @@
-<p id="notice"><%= notice %></p>
+<ul class="nav nav-tabs nav-fill pt-2 mb-5">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Productos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Productos Vendidos</a>
+  </li>
+</ul>
 
-<h1>Admin Products</h1>
-
-<table>
+<div class="container">
+<div class="table-responsive">
+<table class="table table-hover align-middle">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th scope="col">#</th>
+      <th scope="col">Foto</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Categoría</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Borrar</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @products.each do |product| %>
+    <% @products.each_with_index do |product, i| %>
       <tr>
-        <td><%= product.title %></td>
-        <td><%= link_to ' Show |', admin_product_path(id: product.slug) %></td>
+        <th scope="row"><%= i + 1 %></th>
         <td>
-          <%= link_to ' Edit |', edit_admin_product_path(id: product.slug) %>
+          <img src="https://via.placeholder.com/50/09f.png/fff"
+            class="img-thumbnail" alt="<%= product.title %>">
         </td>
-        <td><%= link_to ' Destroy', admin_product_path(id: product.slug),
-          method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= product.title %></td>
+        <td><%= product.quantity %></td>
+        <td><%= product.category %></td>
+        <td><%= product.option %></td>
+        <td>
+          <%= link_to edit_admin_product_path(id: product.slug) do %>
+            <i class="text-muted fas fa-cog"></i>
+          <% end %>
+        </td>
+        <td class="align-middle">
+            <%= link_to admin_product_path(id: product.slug), method: :delete,
+              data: { confirm: 'Are you sure?' } do %>
+                <i class="text-danger fas fa-trash-alt"></i>
+            <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
 
-<br>
+
+
 
 <%= link_to 'New Product', new_admin_product_path %>

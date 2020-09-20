@@ -3,37 +3,38 @@
 	<div class="position-sticky pt-3">
 		<ul class="nav flex-column">
 			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="/admin">
+				<a class="nav-link <%= active_class('/admin') %>" aria-current="page" href="/admin">
 					<i class="mr-3 fas fa-home"></i>
 					Home
 				</a>
 				<hr>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link <%= active_class('/admin/orders') %>" href="#">
 					<i class="mr-3 far fa-hand-peace"></i>
 					Ordenes
 				</a>
 				<hr>
 			</li>
 			<li class="nav-item">
-				<%= link_to admin_products_path, class: "nav-link" do %>
+				<%= link_to admin_products_path,
+					class: "nav-link #{active_class('/admin/products')}" do %>
 					<i class="mr-3 fas fa-tshirt"></i>
 					Productos
 				<% end %>
 				<hr>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link" href="#" >
 					<i class="mr-3 fas fa-user-astronaut"></i>
 					Clientes
 				</a>
 				<hr>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
+				<a class="nav-link <%= active_class('/admin/reports') %>" href="#">
 					<i class="mr-3 fas fa-pizza-slice"></i>
-					Reports
+					Reportes
 				</a>
 				<hr>
 			</li>
