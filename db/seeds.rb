@@ -7,14 +7,14 @@ require 'faker'
 # 	)
 # end
 
-# ProductCategory.create(
-# 	[
-# 		{category_type: "hombre"},
-# 		{category_type: "mujer"},
-# 		{category_type: "otro"},
-# 	]
-# )
-options = ["camisa", "pantalón", "gorra", "polo"]
-Product.all.each do |p|
-	p.update(category: ProductCategory.all.sample.category_type, quantity: rand(1..10), option: options.sample)
-end
+ProductCategory.create(
+	[
+		{category_type: "hombre"},
+		{category_type: "mujer"},
+		{category_type: "otro"},
+	]
+)
+# options = ["camisa", "pantalón", "gorra", "polo"]
+# Product.all.each do |p|
+# 	p.update(category: ProductCategory.all.sample.category_type, quantity: rand(1..10), option: options.sample)
+# end
