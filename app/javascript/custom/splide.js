@@ -3,18 +3,21 @@ import '@splidejs/splide/dist/css/splide.min.css';
 
 
 const splide = () => {
-	new Splide( '#image-slider', {
-		type   : 'loop',
-		perPage: 3,
-		autoplay: 'playing',
-		breakpoints: {
-			640: {
-				perPage: 1,
+	const splideable = document.getElementById('image-slider');
+	if (splideable) {
+		new Splide( '#image-slider', {
+			type   : 'loop',
+			perPage: 3,
+			autoplay: 'playing',
+			breakpoints: {
+				640: {
+					perPage: 1,
+				},
 			},
-		},
-		gap: '1rem',
-		lazyLoad: true
-	} ).mount();
+			gap: '1rem',
+			lazyLoad: true
+		} ).mount();
+	}
 }
 
 // export default splide;

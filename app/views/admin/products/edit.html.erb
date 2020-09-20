@@ -1,6 +1,9 @@
-<h1>Editing Admin Product</h1>
-
-<%= render 'form', product: @product %>
-
-<%= link_to 'Show', admin_product_path(@product) %> |
-<%= link_to 'Back', admin_products_path %>
+<div class="row">
+	<div class="col-md-9 offset-md-1">
+		<div id="new-product">
+			<h2 class="text-center my-5">Editar Producto</h2>
+			<hr class="mb-3">
+			<%= render 'form', product: @product %>
+		</div>
+	</div>
+</div>

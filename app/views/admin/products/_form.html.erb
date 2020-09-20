@@ -1,33 +1,70 @@
-<%= form_with(model: [:admin, product], local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-      <ul>
-        <% admin_product.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="container">
+  <%= form_with(model: [:admin, product], local: true) do |f| %>
+    <div class="mb-4">
+      <%= label_tag(:title, "Nombre") %>
+      <%= f.text_field :title, class: "form-control", required: true %>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="mb-4">
+          <%= label_tag(:price, "Precio") %>
+          <%= f.number_field :price, class: "form-control", required: true %>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="mb-4">
+          <%= label_tag(:quantity, "Cantidad") %>
+          <%= f.number_field :quantity, class: "form-control", required: true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="mb-4">
+          <%= label_tag(:category, "Categoría") %>
+          <%= f.select(:category, options_for_select(
+            ProductCategory.all.pluck(:category_type).map { |c| [c.capitalize, c]},
+            :selected => f.object.category), {include_blank: true},
+            class: "form-control", required: true) %>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6">
+        <div class="mb-4">
+          <%= label_tag(:option, "Opción") %>
+          <%= f.select(:option, options_for_select([['Polo', 'polo'], ['Manga larga', 'manga_larga'], ['Camiseta', 'camiseta'], ['Gorra', 'gorra']], :selected => f.object.option),
+            {include_blank: true}, class: "form-control", required: true) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label >Foto</label>
+      <div class="form-file">
+        <%= f.file_field :main_image, class: "form-file-input", id: "productImage" %>
+        <label class="form-file-label" for="productImage">
+          <span class="form-file-text">Seleccionar...</span>
+          <span class="form-file-button">Buscar</span>
+        </label>
+      </div>
+    </div>
+    <br>
+    <div class="row mt-4">
+      <div class="col">
+        <%= link_to "Cancelar", admin_products_path, class: "btn btn-outline-danger btn-block"  %>
+      </div>
+      <div class="col">
+        <%= f.submit "Salvar", class: "btn btn-outline-dark btn-block" %>
+      </div>
     </div>
   <% end %>
+</div>
 
-  <div class="row">
-    <div class="col-3">
-      <h5><%= form.text_field :title %></h5>
-    </div>
-    <div class="col-3">
-      <div class="from-group">
-        <%= form.number_field :price %>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="from-group">
-        <%= form.file_field :main_image %>
-      </div>
-    </div>
-    <div class="col-3">
-      <%= form.submit "Simón" %>
-    </div>
-  </div>
-<% end %>
-
-
+<script>
+  $('#productImage').on('change',function(){
+    let fileName = $(this).val();
+    $('.form-file-text').html(fileName);
+  })
+</script>

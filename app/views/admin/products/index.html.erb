@@ -7,52 +7,56 @@
   </li>
 </ul>
 
-<div class="container">
-<div class="table-responsive">
-<table class="table table-hover align-middle">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Foto</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Categoría</th>
-      <th scope="col">Tipo</th>
-      <th scope="col">Editar</th>
-      <th scope="col">Borrar</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each_with_index do |product, i| %>
-      <tr>
-        <th scope="row"><%= i + 1 %></th>
-        <td>
-          <img src="https://via.placeholder.com/50/09f.png/fff"
-            class="img-thumbnail" alt="<%= product.title %>">
-        </td>
-        <td><%= product.title %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.category %></td>
-        <td><%= product.option %></td>
-        <td>
-          <%= link_to edit_admin_product_path(id: product.slug) do %>
-            <i class="text-muted fas fa-cog"></i>
-          <% end %>
-        </td>
-        <td class="align-middle">
-            <%= link_to admin_product_path(id: product.slug), method: :delete,
-              data: { confirm: 'Are you sure?' } do %>
-                <i class="text-danger fas fa-trash-alt"></i>
-            <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="products" class="container">
+  <div class="table-responsive">
+    <h4 class="mb-2">Producto Activo
+      <%= link_to 'Agregar', new_admin_product_path,
+        class: "float-right btn btn-outline-dark mb-4" %>
+    </h4>
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Foto</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each_with_index do |product, i| %>
+          <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td>
+              <% if product.main_image.attached? %>
+                <%= image_tag product.main_image,
+                  class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+              <% else %>
+                <%= image_tag 'otra_vez_blanco.jpg',
+                  class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+              <% end %>
+            </td>
+            <td><%= product.title %></td>
+            <td><%= product.quantity %></td>
+            <td><%= product.category&.humanize %></td>
+            <td><%= product.option&.humanize %></td>
+            <td>
+              <%= link_to edit_admin_product_path(id: product.slug) do %>
+                <i class="text-muted fas fa-cog"></i>
+              <% end %>
+            </td>
+            <td class="align-middle">
+                <%= link_to admin_product_path(id: product.slug), method: :delete,
+                  data: { confirm: 'Are you sure?' } do %>
+                    <i class="text-danger fas fa-trash-alt"></i>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-</div>
-
-
-
-
-<%= link_to 'New Product', new_admin_product_path %>
