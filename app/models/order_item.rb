@@ -4,7 +4,7 @@ class OrderItem < ApplicationRecord
 
 	before_save :set_unit_price
 	before_save :set_total_price
-	before_save :check_inventory
+	before_validation :check_inventory
 
 	def unit_price
 		if persisted?
@@ -29,7 +29,9 @@ class OrderItem < ApplicationRecord
 	end
 
 	def check_inventory
-		if self.quantity > self.product.quantity
+		product_quantiy = self.product.quantity
+		if self.quantity > product_quantiy ||
+			(self.order.order_items.where(product_id: self.product.id).pluck(:quantity).sum + self.product.quantity) > product_quantiy
 			errors.add(:Error, ": no tenemos esa cantidad en inventario, cambia el número de piezas.")
 		end
 	end
