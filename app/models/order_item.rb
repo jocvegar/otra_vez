@@ -4,6 +4,7 @@ class OrderItem < ApplicationRecord
 
 	before_save :set_unit_price
 	before_save :set_total_price
+	before_save :check_inventory
 
 	def unit_price
 		if persisted?
@@ -25,5 +26,11 @@ class OrderItem < ApplicationRecord
 
 	def set_total_price
 		self[:total_price] = quantity * set_unit_price
+	end
+
+	def check_inventory
+		if self.quantity > self.product.quantity
+			errors.add(:Error, ": no tenemos esa cantidad en inventario, cambia el número de piezas.")
+		end
 	end
 end

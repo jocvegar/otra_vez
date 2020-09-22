@@ -2,7 +2,12 @@
 	<div class="container h-100">
 		<div class="row align-items-center h-100">
 			<div class="col-md-4 offset-md-8 col-12 text-center">
-				<h1 class="text-white">HOLA CHELE</h1>
+				<div class="text-black">
+					<h2 class="display-6">
+						Encuentra Tu Estilo
+					</h2>
+					<h1 class="font-weight-bold">Otra Vez</h1>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -10,6 +15,12 @@
 
 <section id="main-section">
 	<div class="container my-2">
+		<div class="title-section my-5">
+			<h2 class="text-uppercase">
+				<span class="d-block">Descubre</span>
+				Nuestra Colección
+			</h2>
+		</div>
 		<div class="row">
 			<div class="col-12 col-md-6 my-2">
 				<div class="row">
@@ -73,8 +84,13 @@
 	<%# end %>
 </section> -->
 
-<section id="new"class="container mx-auto my-2 py-5">
-	<h2 class="text-uppercase text-center font-weight-bolder">LO NUEVO</h2>
+<section id="new"class="container mx-auto mt-2 mb-5 py-3">
+	<div class="title-section my-5">
+		<h2 class="text-uppercase">
+			<span class="d-block">Lo</span>
+			Nuevo
+		</h2>
+	</div>
 	<div id="image-slider" class="splide">
 		<div class="splide__slider">
 			<div class="splide__track">
@@ -120,21 +136,31 @@
 <style>
 .bgimage {
 	height:600px;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url(<%= image_path('banner.jpg') %>);
+	filter: brightness(100%);
+	background-image: url(<%= image_path('banner2.jpg') %>);
 }
 
 .chava {
 	height: 95vh;
+	filter: brightness(100%);
 	background-image: url(<%= image_path('chava.jpg') %>);
 }
 
 .chavo {
 	height: 50vh;
+	filter: brightness(100%);
 	background-image: url(<%= image_path('chavo.jpg') %>);
 }
 .wacho {
-	height: 40vh;
+	height: 42vh;
+	filter: brightness(100%);
 	background-image: url(<%= image_path('wacho.jpg') %>);
 }
+
+/*.bgimage {
+	height:600px;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.25),
+		rgba(0, 0, 0, 0.25)),
+		url(<%= image_path('banner2.jpg') %>);
+}*/
 </style>

@@ -18,7 +18,7 @@
 			position:absolute;
 			top:-13px;
 			right:-8px;
-			padding:6px;
+			padding:5px;
 		}
 	}
 }
@@ -33,4 +33,15 @@
 	.modal-title {
 		margin:auto;
 	}
+}
+
+.title-section h2 {
+    padding-left: 30px;
+    border-left: 4px solid #ee4266;
+    display: inline-block;
+    color: #000;
+}
+
+#hero h1 {
+	font-size: 70px;
 }
