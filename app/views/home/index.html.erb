@@ -22,7 +22,7 @@
 			</h2>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-6 my-2">
+			<div class="col-12 col-md-6 my-2 order-2">
 				<div class="row">
 					<div class="col-12 mb-2">
 						<div class="d-flex flex-column align-items-center justify-content-end div-image chavo">
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-md-6 my-2">
+			<div class="col-12 col-md-6 my-2 order-1">
 				<div class="d-flex flex-column align-items-center justify-content-end div-image chava">
 					<%= link_to "MUJER",categorias_path(cat: "mujer"),
 						class: "btn btn-light mb-4 px-4" %>
@@ -100,10 +100,12 @@
 							<div class="splide__slide__container mb-2">
 								<% if product.main_image.attached? %>
 								  <%= image_tag product.main_image,
-								    class: "img-fluid", style: 'height:200px;width:auto' %>
+								    class: "img-fluid",
+								    style: 'height:200px;width:auto' %>
 								<% else %>
 								  <%= image_tag 'otra_vez_blanco.jpg',
-								    class: "img-fluid", style: 'height:200px;width:auto' %>
+								    class: "img-fluid",
+								    style: 'height:200px;width:auto' %>
 								<% end %>
 
 								<h5 class="text-muted"><%= product.title %></h5>
@@ -123,10 +125,8 @@
 			</div>
 		</div>
 		<div class="splide__progress mt-3">
-			<div class="splide__progress__bar">
-			</div>
+			<div class="splide__progress__bar"></div>
 		</div>
-
 	</div>
 </section>
 
@@ -156,11 +156,4 @@
 	filter: brightness(100%);
 	background-image: url(<%= image_path('wacho.jpg') %>);
 }
-
-/*.bgimage {
-	height:600px;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.25),
-		rgba(0, 0, 0, 0.25)),
-		url(<%= image_path('banner2.jpg') %>);
-}*/
 </style>

@@ -1,79 +1,74 @@
-<div id="products">
-	<hr>
-	<div class="container my-5">
-		<div class="row">
-			<div class="col-12 col-sm-3 pb-4">
-				<div class="card" data-controller="filter" id="hiMom">
-					<div class="card-header" id="headingOne">
-						<h2 class="mb-0">
-							<button
-								class="btn btn-light btn-block text-left d-flex justify-content-between switch"
-								type="button"
-
-
-
-
-								data-action="filter#toggle">
-								<span>Filtrar</span>
-								<i data-target="filter.icon"
-								class="fas fa-plus mt-1"></i>
-							</button>
-						</h2>
-					</div>
-
-					<div class="collapse" data-target="filter.list">
-						<div class="card-body">
-							<ul class="list-group">
-								<li class="list-group-item">No lo he</li>
-								<li class="list-group-item">activado</li>
-								<li class="list-group-item">Todavía</li>
-								<li class="list-group-item">Gaylord</li>
-							</ul>
-						</div>
-					</div>
+<hr>
+<div id="products" class="container my-5">
+	<div class="row">
+		<div class="col-12 col-sm-3 pb-4">
+			<div class="card" data-controller="filter" id="hiMom">
+				<div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+						<button
+							class="btn btn-light btn-block text-left d-flex justify-content-between switch"
+							type="button"
+							data-action="filter#toggle">
+							<span>Filtrar</span>
+							<i data-target="filter.icon"
+							class="fas fa-plus mt-1"></i>
+						</button>
+					</h2>
 				</div>
-			</div>
-			<div class="col-12 col-sm-9">
-				<div class="row">
-					<% @products.each do |product| %>
-						<div class="col-12 col-sm-4">
-							<div class="card mb-3 mx-auto">
-								<% if product.main_image.attached? %>
-								  <%= image_tag product.main_image,
-								    class: "card-img-top px-3 py-3", style: 'height:15rem;width:auto' %>
-								<% else %>
-								  <%= image_tag 'otra_vez_blanco.jpg',
-								    class: "card-img-top px-3 py-3", style: 'height:15rem;width:auto' %>
-								<% end %>
-								<div class="card-body">
-									<h6 class="card-subtitle"><%= product.title %></h6>
-									<p class="card-title font-weight-bolder">
-										<%= number_to_currency(product.price, unit: "Lps. ", separator: ".", delimiter: ",") %>
-									</p>
 
-									<%= form_for(@order_item, remote: true) do |f| %>
-										<%= f.hidden_field :product_id, value: product.id %>
-										<div class="d-flex justify-content-around">
-											<div class="from-group flex-fill mr-3">
-												<%= f.number_field :quantity, value: 1, min: 1,
-													max: product.quantity,
-													class: 'form-control' %>
-											</div>
-											<div>
-												<%= f.submit "Agregar",
-												class: "btn btn-sm btn-outline-dark form-control" %>
-											</div>
-										</div>
-									<% end %>
-								</div>
-							</div>
-						</div>
-					<% end %>
+				<div class="collapse" data-target="filter.list">
+					<div class="card-body">
+						<ul class="list-group">
+							<li class="list-group-item">No lo he</li>
+							<li class="list-group-item">activado</li>
+							<li class="list-group-item">Todavía</li>
+							<li class="list-group-item">Gaylord</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-		<%= render 'shared/added_to_cart_modal' %>
+		<div class="col-12 col-sm-9">
+			<div class="row">
+				<% @products.each do |product| %>
+					<div class="col-12 col-sm-4">
+						<div class="card mb-3 mx-auto">
+							<% if product.main_image.attached? %>
+							  <%= image_tag product.main_image,
+							    class: "card-img-top px-3 py-3", style: 'height:15rem;width:auto' %>
+							<% else %>
+							  <%= image_tag 'otra_vez_blanco.jpg',
+							    class: "card-img-top px-3 py-3", style: 'height:15rem;width:auto' %>
+							<% end %>
+							<div class="card-body">
+								<h6 class="card-subtitle"><%= product.title %></h6>
+								<p class="card-title font-weight-bolder">
+									<%= number_to_currency(product.price, unit: "Lps. ", separator: ".", delimiter: ",") %>
+								</p>
+
+								<%= form_for(@order_item, remote: true) do |f| %>
+									<%= f.hidden_field :product_id,
+										value: product.id %>
+									<div class="d-flex justify-content-around">
+										<div class="from-group flex-fill mr-3">
+											<%= f.number_field :quantity, value: 1, min: 1,
+												max: product.quantity,
+												class: 'form-control' %>
+										</div>
+										<div>
+											<%= f.submit "Agregar",
+											class: "btn btn-sm btn-outline-dark form-control" %>
+										</div>
+									</div>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
 	</div>
+	<%= render 'shared/added_to_cart_modal' %>
 </div>
 
 

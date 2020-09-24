@@ -4,7 +4,7 @@ class OrderItem < ApplicationRecord
 
 	before_save :set_unit_price
 	before_save :set_total_price
-	before_validation :check_inventory
+	# before_validation :check_inventory
 
 	def unit_price
 		if persisted?
