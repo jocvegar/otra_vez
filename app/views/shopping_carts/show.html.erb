@@ -40,7 +40,7 @@
 									unit: "Lps. ", separator: ".", delimiter: ",") %>
 							</td>
 							<td class="from-group pr-5">
-								<%= form_for(item, remote: true) do |f| %>
+								<%= form_for(item, data: { reflex: "submit->Item#update", id: item.id }) do |f| %>
 									<%= f.hidden_field :product_id,
 										value: item.product.id %>
 									<%= f.number_field :quantity,
