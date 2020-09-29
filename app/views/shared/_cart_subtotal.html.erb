@@ -1,0 +1,23 @@
+<div class="row justify-content-end py-3">
+	<div class="col-12 col-md-6 d-flex justify-content-around justify-content-md-between">
+		<h4 class="align-middle">SUBTOTAL</h4>
+		<h4 class="font-weight-bolder align-middle">
+			<%= number_to_currency(current_order.subtotal,
+				unit: "Lps. ", separator: ".", delimiter: ",") %>
+		</h4>
+	</div>
+</div>
+<div class="row">
+	<div class="col-12 col-md-6">
+		<%= link_to root_path,
+			class: "btn btn-block btn-outline-dark my-3" do %>
+			Continuar Comprando
+		<% end %>
+	</div>
+	<div class="col-12 col-md-6">
+		<button type="button"
+			class="btn btn-block btn-dark my-3">
+			Check Out
+		</button>
+	</div>
+</div>

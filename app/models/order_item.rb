@@ -2,9 +2,12 @@ class OrderItem < ApplicationRecord
 	belongs_to :product
 	belongs_to :order
 
+	before_validation :check_inventory
+
 	before_save :set_unit_price
 	before_save :set_total_price
-	# before_validation :check_inventory
+
+	before_update :test
 
 	def unit_price
 		if persisted?
@@ -29,10 +32,18 @@ class OrderItem < ApplicationRecord
 	end
 
 	def check_inventory
-		product_quantiy = self.product.quantity
-		if self.quantity > product_quantiy ||
-			(self.order.order_items.where(product_id: self.product.id).pluck(:quantity).sum + self.product.quantity) > product_quantiy
-			errors.add(:Error, ": no tenemos esa cantidad en inventario, cambia el número de piezas.")
+		if new_record?
+			product_quantiy = self.product.quantity
+			if self.quantity > product_quantiy || (self.order.order_items.where(product_id: self.product.id).pluck(:quantity).sum + self.quantity) > product_quantiy
+				errors.add(:Error, "no tenemos esa cantidad en inventario, cambia el número de piezas.")
+			end
+		end
+	end
+
+	def test
+		# byebug
+		if true
+			errors.add(:Error, "no tenemos esa cantidad en inventario, cambia el número de piezas.")
 		end
 	end
 end
