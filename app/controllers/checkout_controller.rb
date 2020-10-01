@@ -11,9 +11,9 @@ class CheckoutController < ApplicationController
 		@shipping_address = @order.build_address(address_params)
 
 		if @shipping_address.save
-			format.html { redirect_to root_path, notice: 'Dirección guardada!' }
+			redirect_to root_path, notice: 'Dirección guardada!'
 		else
-			format.html { broadcast_errors @shipping_address, address_params }
+			broadcast_errors @shipping_address, address_params
 		end
 	end
 
