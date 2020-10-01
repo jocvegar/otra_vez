@@ -1,0 +1,138 @@
+<%= form_with model: @shipping_address,
+	url: checkout_index_path do |f| %>
+
+	<div class="row g-3">
+		<div class="col-sm-6">
+			<%= label_tag :nombre, "Nombre", class: "form-label" %>
+			<%= f.text_field :nombre, class: "form-control" %>
+			<small>
+				<%= f.error_for :nombre, class: "text-danger" %>
+			</small>
+		</div>
+
+		<div class="col-sm-6">
+			<%= label_tag :apellido, "Apellido", class: "form-label" %>
+			<%= f.text_field :apellido, class: "form-control",
+				required: true %>
+			<small>
+				<%= f.error_for :apellido, class: "text-danger" %>
+			</small>
+		</div>
+
+		<div class="col-12">
+			<%= label_tag :correo, "Correo", class: "form-label" %>
+			<%= f.email_field :correo, class: "form-control",
+				required: true, placeholder: "correo@otravez.com" %>
+			<small>
+				<%= f.error_for :correo, class: "text-danger" %>
+			</small>
+		</div>
+
+		<div class="col-md-6">
+			<%= label_tag :telefono, "Teléfono", class: "form-label" %>
+			<div class="input-group">
+				<span class="input-group-text">
+					<i class="fas fa-mobile-alt"></i>
+				</span>
+				<%= f.text_field :telefono, class: "form-control",
+					required: true %>
+			</div>
+			<small>
+				<%= f.error_for :telefono, class: "text-danger" %>
+			</small>
+		</div>
+
+		<div class="col-md-6">
+			<label for="telefono_alternativo" class="form-label">
+				Teléfono 2 <span class="text-muted">(Opcional)</span>
+			</label>
+			<div class="input-group">
+				<span class="input-group-text">
+					<i class="fas fa-phone-alt"></i>
+				</span>
+				<%= f.text_field :telefono_alternativo,
+					class: "form-control" %>
+			</div>
+		</div>
+
+		<div class="col-12">
+			<%= label_tag :direccion, "Dirección de envío",
+			class: "form-label" %>
+			<%= f.text_field :direccion, class: "form-control",
+				required: true %>
+			<small>
+				<%= f.error_for :direccion, class: "text-danger" %>
+			</small>
+		</div>
+
+		<div class="col-md-5">
+			<%= label_tag :ciudad, "Ciudad",
+			class: "form-label" %>
+			<%= f.text_field :ciudad, class: "form-control",
+				required: true %>
+			<small>
+				<%= f.error_for :ciudad, class: "text-danger" %>
+			</small>
+		</div>
+
+		<div class="col-md-4">
+			<%= label_tag :departamento, "Departamento",
+				class: "form-label" %>
+			<%= f.select(:departamento, options_for_select([
+					["AT", "atlántida"],
+					["CH", "choluteca"],
+					["CL", "colón"],
+					["CM", "comayagua"],
+					["CP", "copán"],
+					["CR", "cortés"],
+					["EP", "el_paraíso"],
+					["FM", "francisco_morazán"],
+					["GD", "gracias_a_dios"],
+					["IN", "intibucá"],
+					["IB", "islas_de_la_bahía"],
+					["LP", "la_paz"],
+					["LE", "lempira"],
+					["OC", "ocotepeque"],
+					["OL", "olancho"],
+					["SB", "santa_bárbara"],
+					["VA", "valle"],
+					["YO", "yoro"]
+				], 'francisco_morazán'), {},
+				class: "form-select", required: true) %>
+			<small>
+				<%= f.error_for :departamento, class: "text-danger" %>
+			</small>
+		</div>
+
+		<div class="col-md-3">
+			<%= label_tag :pais, "Pais",
+			class: "form-label" %>
+			<%= f.text_field :pais, class: "form-control",
+				required: true, value: 'Honduras'  %>
+			<small>
+				<%= f.error_for :pais, class: "text-danger" %>
+			</small>
+		</div>
+	</div>
+
+	<div class="col-12 py-3">
+		<%= label_tag :referencia, "Referencia",
+			class: "form-label" %>
+		<%= f.text_area :referencia,
+			class: "form-control", size: "20x6",
+			placeholder: "Ayudanos con alguna referencia" %>
+	</div>
+
+	<div class="col-12 py-3">
+		<%= label_tag :notas, "Notas", class: "form-label" %>
+		<%= f.text_area :notas, class: "form-control", size: "20x6",
+			placeholder: "Información que deseas compartir" %>
+	</div>
+
+	<hr class="my-4">
+
+	<div class="col my-2">
+		<%= f.submit "Continuar a pagos",
+			class: "btn btn-dark btn-lg btn-block" %>
+	</div>
+<% end %>

@@ -2,6 +2,8 @@ class Order < ApplicationRecord
 	has_many :order_items
 	has_many :products, through: :order_items
 
+	has_one :address, as: :source, dependent: :destroy
+
 	before_save :set_subtotal
 
 	def subtotal

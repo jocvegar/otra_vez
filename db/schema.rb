@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_014818) do
+ActiveRecord::Schema.define(version: 2020_09_30_223744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(version: 2020_09_20_014818) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellido"
+    t.string "direccion"
+    t.string "ciudad"
+    t.string "departamento"
+    t.string "codigo_postal"
+    t.string "pais"
+    t.string "telefono"
+    t.string "telefono_alternativo"
+    t.text "referencia"
+    t.text "notas"
+    t.string "correo"
+    t.string "source_type", null: false
+    t.bigint "source_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_type", "source_id"], name: "index_addresses_on_source_type_and_source_id"
   end
 
   create_table "admins", force: :cascade do |t|

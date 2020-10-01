@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	}
 
 	resources :categorias
+	resources :checkout, except: [:destroy]
 
 	namespace :admin do
 		get '/' => 'home#index'
