@@ -1,4 +1,5 @@
 class CheckoutController < ApplicationController
+	skip_before_action :verify_authenticity_token
 	before_action :set_order, only: [:new, :create]
 
 	def new
