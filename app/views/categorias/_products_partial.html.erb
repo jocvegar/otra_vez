@@ -10,8 +10,13 @@
 			<% end %>
 			<div class="card-body">
 				<h6 class="card-subtitle"><%= product.title %></h6>
-				<p class="card-title font-weight-bolder">
-					<%= number_to_currency(product.price, unit: "Lps. ", separator: ".", delimiter: ",") %>
+				<p class="card-title font-weight-bolder d-flex justify-content-between">
+					<span>
+						<%= number_to_currency(product.price, unit: "Lps. ", separator: ".", delimiter: ",") %>
+					</span>
+					<span class="h5 font-weight-normal text-secondary">
+						<%= product.size.humanize.upcase %>
+					</span>
 				</p>
 
 				<%= form_for(order_item, remote: true) do |f| %>
@@ -34,7 +39,7 @@
 	</div>
 <% end %>
 
-<% if !option_params.nil? && products.empty? %>
+<% if (!option_params.nil? || !size_params.nil?) && products.empty? %>
 	<div class="container">
 		<div class="empty-products bg-light my-5 d-flex justify-content-center align-items-center">
 			<h5 class="text-muted text-center">

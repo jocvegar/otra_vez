@@ -9,36 +9,48 @@
       <div class="col-12 col-md-6">
         <div class="mb-4">
           <%= label_tag(:price, "Precio") %>
-          <%= f.number_field :price, class: "form-control", required: true %>
+          <%= f.number_field :price, class: "form-control",
+            required: true %>
         </div>
       </div>
       <div class="col-12 col-md-6">
         <div class="mb-4">
           <%= label_tag(:quantity, "Cantidad") %>
-          <%= f.number_field :quantity, class: "form-control", required: true %>
+          <%= f.number_field :quantity, class: "form-control",
+            required: true %>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <div class="mb-4">
           <%= label_tag(:category, "Categoría") %>
           <%= f.select(:category, options_for_select(
             ProductCategory.all.pluck(:category_type).map { |c| [c.capitalize, c]},
             :selected => f.object.category), {include_blank: true},
-            class: "form-control", required: true) %>
+            class: "form-select", required: true) %>
         </div>
       </div>
 
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <div class="mb-4">
           <%= label_tag(:option, "Opción") %>
           <% options = Product.options.
             map { |product| [product.humanize, product] } %>
           <%= f.select(:option, options_for_select(options,
             :selected => f.object.option),
-            {include_blank: true}, class: "form-control", required: true) %>
+            {include_blank: true}, class: "form-select", required: true) %>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="mb-4">
+          <%= label_tag(:size, "Tamaño") %>
+          <% sizes = Product.sizes.
+            map { |size| [size.humanize.upcase, size] } %>
+          <%= f.select(:size, options_for_select(sizes,
+            :selected => f.object.size),
+            {include_blank: true}, class: "form-select", required: true) %>
         </div>
       </div>
     </div>

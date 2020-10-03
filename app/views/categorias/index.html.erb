@@ -12,11 +12,11 @@
 							data-action="filter#toggle_option">
 							<span>Filtrar</span>
 							<i data-target="filter.optionIcon"
-							class="fas <%= params[:open] ? 'fa-minus' : 'fa-plus' %> mt-1"></i>
+							class="fas <%= params[:open_option] ? 'fa-minus' : 'fa-plus' %> mt-1"></i>
 						</button>
 					</h2>
 				</div>
-				<div class="collapse <%= 'show' if params[:open] %>"
+				<div class="collapse <%= 'show' if params[:open_option] %>"
 					data-target="filter.optionList">
 					<div class="card-body">
 						<ul class="list-group">
@@ -43,23 +43,27 @@
 							data-action="filter#toggle_size">
 							<span>Tamaño</span>
 							<i data-target="filter.sizeIcon"
-							class="fas <%= params[:open] ? 'fa-minus' : 'fa-plus' %> mt-1"></i>
+							class="fas <%= params[:open_size] ? 'fa-minus' : 'fa-plus' %> mt-1"></i>
 						</button>
 					</h2>
 				</div>
-				<div class="collapse <%= 'show' if params[:open] %>"
+				<div class="collapse <%= 'show' if params[:open_size] %>"
 					data-target="filter.sizeList">
 					<div class="card-body">
 						<ul class="list-group">
-							<%= filter_link_options(params[:option]) %>
-							<%= filter_link_options(params[:option],
-								"camiseta") %>
-							<%= filter_link_options(params[:option],
-								"polo") %>
-							<%= filter_link_options(params[:option],
-								"manga_larga") %>
-							<%= filter_link_options(params[:option],
-								"gorra") %>
+							<%= filter_link_sizes(params[:size]) %>
+							<%= filter_link_sizes(params[:size],
+								"xs") %>
+							<%= filter_link_sizes(params[:size],
+								"s") %>
+							<%= filter_link_sizes(params[:size],
+								"m") %>
+							<%= filter_link_sizes(params[:size],
+								"l") %>
+							<%= filter_link_sizes(params[:size],
+								"xl") %>
+							<%= filter_link_sizes(params[:size],
+								"fits_all") %>
 						</ul>
 					</div>
 				</div>
@@ -69,7 +73,8 @@
 			<div id="products-loop" class="row">
 				<%= render 'products_partial',
 					products: @products, order_item: @order_item,
-					option_params: params[:option] %>
+					option_params: params[:option],
+					size_params: params[:size]%>
 			</div>
 		</div>
 	</div>

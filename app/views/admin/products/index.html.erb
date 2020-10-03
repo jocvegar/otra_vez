@@ -18,6 +18,7 @@
           <th data-sortable="true" scope="col">Cantidad</th>
           <th data-sortable="true" scope="col">Categoría</th>
           <th data-sortable="true" scope="col">Tipo</th>
+          <th data-sortable="true" scope="col">Tamaño</th>
           <th scope="col">Editar</th>
           <th scope="col">Borrar</th>
         </tr>
@@ -39,6 +40,7 @@
             <td><%= product.quantity %></td>
             <td><%= product.category&.humanize %></td>
             <td><%= product.option&.humanize %></td>
+            <td><%= product.size&.humanize&.upcase %></td>
             <td>
               <%= link_to edit_admin_product_path(id: product.slug) do %>
                 <i class="text-muted fas fa-cog"></i>
@@ -56,9 +58,3 @@
     </table>
   </div>
 </div>
-
-<style>
-  .fixed-table-toolbar {
-    float: left;
-  }
-</style>

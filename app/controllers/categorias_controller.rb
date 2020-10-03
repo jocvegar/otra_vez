@@ -16,5 +16,9 @@ class CategoriasController < ApplicationController
 		if params[:option]
 			@products = @products.where(option: params[:option])
 		end
+
+		if params[:size]
+			@products = @products.where(size: params[:size])
+		end
 	end
 end
