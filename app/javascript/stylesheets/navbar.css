@@ -61,3 +61,8 @@ body {
 .text-white-50 {
   color: rgba(255, 255, 255, .5);
 }
+
+footer {
+  min-height: 60vh;
+  background: black;
+}

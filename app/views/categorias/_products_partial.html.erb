@@ -1,0 +1,45 @@
+<% products.each do |product| %>
+	<div class="col-12 col-sm-4">
+		<div class="card mb-3 mx-auto">
+			<% if product.main_image.attached? %>
+			  <%= image_tag product.main_image,
+			    class: "card-img-top px-3 py-3", style: 'height:15rem;width:auto' %>
+			<% else %>
+			  <%= image_tag 'otra_vez_blanco.jpg',
+			    class: "card-img-top px-3 py-3", style: 'height:15rem;width:auto' %>
+			<% end %>
+			<div class="card-body">
+				<h6 class="card-subtitle"><%= product.title %></h6>
+				<p class="card-title font-weight-bolder">
+					<%= number_to_currency(product.price, unit: "Lps. ", separator: ".", delimiter: ",") %>
+				</p>
+
+				<%= form_for(order_item, remote: true) do |f| %>
+					<%= f.hidden_field :product_id,
+						value: product.id %>
+					<div class="d-flex justify-content-around">
+						<div class="from-group flex-fill mr-3">
+							<%= f.number_field :quantity, value: 1, min: 1,
+								max: product.quantity,
+								class: 'form-control' %>
+						</div>
+						<div>
+							<%= f.submit "Agregar",
+							class: "btn btn-sm btn-outline-dark form-control" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<% if !option_params.nil? && products.empty? %>
+	<div class="container">
+		<div class="empty-products bg-light my-5 d-flex justify-content-center align-items-center">
+			<h5 class="text-muted text-center">
+				No tenemos disponible en este momento :(
+			</h5>
+		</div>
+	</div>
+<% end %>

@@ -34,7 +34,10 @@
       <div class="col-12 col-md-6">
         <div class="mb-4">
           <%= label_tag(:option, "Opción") %>
-          <%= f.select(:option, options_for_select([['Polo', 'polo'], ['Manga larga', 'manga_larga'], ['Camiseta', 'camiseta'], ['Gorra', 'gorra']], :selected => f.object.option),
+          <% options = Product.options.
+            map { |product| [product.humanize, product] } %>
+          <%= f.select(:option, options_for_select(options,
+            :selected => f.object.option),
             {include_blank: true}, class: "form-control", required: true) %>
         </div>
       </div>

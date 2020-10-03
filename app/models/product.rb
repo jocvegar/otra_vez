@@ -14,4 +14,8 @@ class Product < ApplicationRecord
 	def should_generate_new_friendly_id?
 		title_changed? || super
 	end
+
+	def self.options
+	  return %w(polo manga_larga camiseta gorra)
+	end
 end
