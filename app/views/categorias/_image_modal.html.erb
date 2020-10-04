@@ -1,0 +1,21 @@
+<div class="modal fade" id="imageModal-<%= product.slug %>" tabindex="-1"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-muted">
+          <%= product.title %>
+        </h5>
+        <button type="button"class="btn btn-outline-secondary"
+          data-dismiss="modal">
+          x
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= image_tag product.main_image,
+          class: "rounded mx-auto d-block",
+          style: 'height:55vh;width:auto;object-fit:fill;' %>
+      </div>
+    </div>
+  </div>
+</div>
