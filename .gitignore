@@ -37,3 +37,11 @@ yarn-debug.log*
 
 # Ignore application configuration
 /config/application.yml
+
+#db
+/dump.rdb
+dump.rdb
+
+# Ignore .DS_Store file
+.DS_Store
+
