@@ -52,18 +52,10 @@
 					<div class="card-body">
 						<ul class="list-group">
 							<%= filter_link_sizes(params[:size]) %>
-							<%= filter_link_sizes(params[:size],
-								"xs") %>
-							<%= filter_link_sizes(params[:size],
-								"s") %>
-							<%= filter_link_sizes(params[:size],
-								"m") %>
-							<%= filter_link_sizes(params[:size],
-								"l") %>
-							<%= filter_link_sizes(params[:size],
-								"xl") %>
-							<%= filter_link_sizes(params[:size],
-								"fits_all") %>
+							<%  Product.sizes.each do |size| %>
+								<%= filter_link_sizes(params[:size],
+									size) %>
+							<% end %>
 						</ul>
 					</div>
 				</div>

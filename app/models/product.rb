@@ -20,6 +20,6 @@ class Product < ApplicationRecord
 	end
 
 	def self.sizes
-	  return %w(xs s m l xl fits_all)
+	  return %w(xxs xs s m l xl fits_all)
 	end
 end
