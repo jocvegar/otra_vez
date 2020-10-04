@@ -16,21 +16,28 @@
       style="margin-left: 0rem;z-index: 999;">
       <ul class="navbar-nav mx-auto my-3 mb-lg-0 h4">
         <li class="my-2 nav-item active">
-          <%= link_to "HOMBRE",categorias_path(cat: "hombre"), class: "nav-link" %>
+          <%= link_to "HOMBRE",categorias_path(cat: "hombre"),
+            class: "nav-link" %>
         </li>
         <li class="my-2 nav-item">
-          <%= link_to "MUJER",categorias_path(cat: "mujer"), class: "nav-link" %>
+          <%= link_to "MUJER",categorias_path(cat: "mujer"),
+            class: "nav-link" %>
         </li>
-        <li class="my-2 nav-item dropdown">
+        <!-- <li class="my-2 nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="masMenu"
             data-toggle="dropdown" aria-expanded="false">OTROS</a>
           <ul class="dropdown-menu" aria-labelledby="masMenu">
             <li>
-              <%= link_to "OTROS",categorias_path(cat: "otro"), class: "dropdown-item" %>
+              <%#= link_to "OTROS",categorias_path(cat: "otro"), class: "dropdown-item" %>
             <li>
             <li><a class="dropdown-item" href="#">PAILAS</a></li>
             <li><a class="dropdown-item" href="#">ALGO MAS</a></li>
           </ul>
+        </li> -->
+
+        <li class="my-2 nav-item">
+          <%= link_to "OTROS",categorias_path(cat: "otro"),
+            class: "nav-link" %>
         </li>
       </ul>
     </div>

@@ -26,8 +26,9 @@
       <div class="col-12 col-md-4">
         <div class="mb-4">
           <%= label_tag(:category, "Categoría") %>
-          <%= f.select(:category, options_for_select(
-            ProductCategory.all.pluck(:category_type).map { |c| [c.capitalize, c]},
+          <% categories = Product.categories.
+            map { |category| [category.humanize, category] } %>
+          <%= f.select(:category, options_for_select(categories,
             :selected => f.object.category), {include_blank: true},
             class: "form-select", required: true) %>
         </div>

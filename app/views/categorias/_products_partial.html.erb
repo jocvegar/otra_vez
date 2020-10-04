@@ -3,10 +3,12 @@
 		<div class="card mb-3 mx-auto">
 			<% if product.main_image.attached? %>
 			  <%= image_tag product.main_image,
-			    class: "card-img-top px-3 py-3", style: 'height:15rem;width:auto' %>
+			    class: "card-img-top px-3 py-3",
+			    style: 'height:17rem;width:auto;object-fit: fill;' %>
 			<% else %>
 			  <%= image_tag 'otra_vez_blanco.jpg',
-			    class: "card-img-top px-3 py-3", style: 'height:20rem;width:auto' %>
+			    class: "card-img-top px-3 py-3",
+			    style: 'height:17rem;width:auto;object-fit: fill;' %>
 			<% end %>
 			<div class="card-body">
 				<h6 class="card-subtitle"><%= product.title %></h6>
