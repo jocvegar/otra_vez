@@ -1,4 +1,4 @@
-<% if Payment.last.file.attached? %>
+<% if Payment&.last&.file&.attached? %>
   <%= image_tag Payment.last.file,
     class: "img-thumbnail", style: 'height:4vw;width:auto' %>
   <%= link_to "dWONLOAD", rails_blob_path(Payment.last.file,
