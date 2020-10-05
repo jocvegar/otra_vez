@@ -1,3 +1,10 @@
+<% if Payment.last.file.attached? %>
+  <%= image_tag Payment.last.file,
+    class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+  <%= link_to "dWONLOAD", rails_blob_path(Payment.last.file,
+  	disposition: 'attachment') %>
+<% end %>
+
 <section id="hero" class="div-image bgimage">
 	<div class="container h-100">
 		<div class="row align-items-center h-100">
@@ -49,40 +56,6 @@
 		</div>
 	</div>
 </section>
-
-<!-- <section class="container products my-5"> -->
-	<!-- session[:order_id]: <%#= session[:order_id] %> -->
-	<!-- <h1>Productos</h1>
-	<%# @products.each do |product| %>
-		<div class="card bg-light mb-3">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-sm-6 col-12">
-						<h3><%#= product.title %></h3>
-					</div>
-					<div class="col-sm-6 col-12">
-						<%#= form_for(@order_item, remote: true) do |f| %>
-							<%#= f.hidden_field :product_id, value: product.id %>
-							<div class="row">
-								<div class="col-4">
-									<h5><%#= product.price %></h5>
-								</div>
-								<div class="col-4">
-									<div class="from-group">
-										<%#= f.number_field :quantity, value: 1, min: 1, class: 'form-control' %>
-									</div>
-								</div>
-								<div class="col-4">
-									<%#= f.submit "Add" %>
-								</div>
-							</div>
-						<%# end %>
-					</div>
-				</div>
-			</div>
-		</div>
-	<%# end %>
-</section> -->
 
 <section id="new"class="container mx-auto mt-2 mb-5 py-3">
 	<div class="title-section my-5">

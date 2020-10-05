@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
 	resources :categorias
 	resources :checkout, except: [:destroy]
+	resources :payments, only: [:new, :create]
 
 	namespace :admin do
 		get '/' => 'home#index'
