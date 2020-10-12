@@ -1,9 +1,9 @@
-<% if Payment&.last&.file&.attached? %>
-  <%= image_tag Payment.last.file,
+<%# if Payment&.last&.file&.attached? %>
+  <%#= image_tag Payment.last.file,
     class: "img-thumbnail", style: 'height:4vw;width:auto' %>
-  <%= link_to "dWONLOAD", rails_blob_path(Payment.last.file,
+  <%#= link_to "dWONLOAD", rails_blob_path(Payment.last.file,
   	disposition: 'attachment') %>
-<% end %>
+<%# end %>
 
 <section id="hero" class="div-image bgimage">
 	<div class="container h-100">
