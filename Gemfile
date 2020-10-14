@@ -32,6 +32,11 @@ gem 'faker', '~> 1.6', '>= 1.6.6'
 gem "devise", "~> 4.7"
 gem "figaro", "~> 1.2"
 gem "aws-sdk-s3", require: false
+gem "redis", "~> 4.2"
+gem "cable_ready", "~> 4.3"
+gem "stimulus_reflex", "~> 3.3"
+gem "optimism", "~> 0.3.5"
+gem 'active_storage_validations'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,9 +55,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "redis", "~> 4.2"
-gem "cable_ready", "~> 4.3"
-gem "stimulus_reflex", "~> 3.3"
-
-gem "optimism", "~> 0.3.5"

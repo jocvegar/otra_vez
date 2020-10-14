@@ -1,7 +1,7 @@
 class ItemReflex < ApplicationReflex
 
   before_reflex do
-     @order_item = OrderItem.find_by(id: element.dataset.id)
+    @order_item = OrderItem.find_by(id: element.dataset.id)
   end
 
   def update

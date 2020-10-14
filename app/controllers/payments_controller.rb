@@ -8,11 +8,11 @@ class PaymentsController < ApplicationController
 	end
 
 	def create
-		@payment = @order.build_payment(payment_params)
+		@payment = current_order.build_payment(payment_params)
 		if @payment.save
 			redirect_to root_path, notice: 'NICE!!'
 		else
-			render :new
+			broadcast_errors @payment, payment_params
 		end
 	end
 
@@ -32,6 +32,6 @@ class PaymentsController < ApplicationController
 	end
 
 	def payment_params
-	  params.require(:payment).permit(:file)
+		params.fetch(:payment, {}).permit(:file)
 	end
 end

@@ -1,7 +1,7 @@
 import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
-	static targets = [ "output", "endTimer", "moreTime", "banner", "submitButton"]
+	static targets = [ "output", "endTimer", "banner", "moreTime", "submitButton", "order"]
 
 	connect() {
 		super.connect()
@@ -10,7 +10,6 @@ export default class extends ApplicationController {
 
 	startTimer() {
 		var countDownDate = new Date(this.endTimerTarget.textContent).getTime();
-		console.log("I got called");
 		let _this = this
 		// Every second
 		var x = setInterval(function() {
@@ -25,13 +24,23 @@ export default class extends ApplicationController {
 			_this.outputTarget.textContent = minutes + "m " + seconds + "s ";
 
 			// If the count down is over, write some text
-			// if (distance < 0) {
-			// 	clearInterval(x);
-			// 	_this.outputTarget.textContent = "Tiempo expirado";
-			// 	_this.moreTimeTarget.innerHTML = "";
-			// 	_this.bannerTarget.innerHTML = "";
-			// 	_this.submitButtonTarget.disabled = true
-			// }
+			if (distance < 0) {
+				clearInterval(x);
+				_this.outputTarget.textContent = "Tiempo expirado";
+				_this.bannerTarget.innerHTML = "";
+				_this.submitButtonTarget.style.display = "none";
+				_this.moreTimeTarget.textContent = "";
+				_this.stimulate('Shopping#test', _this.orderTarget.textContent)
+				document.location.href="/";
+			}
 		}, 1000);
+	}
+
+	checkFile() {
+		if (event.target.value) {
+			this.submitButtonTarget.disabled = false
+		} else {
+			this.submitButtonTarget.disabled = true
+		}
 	}
 }
