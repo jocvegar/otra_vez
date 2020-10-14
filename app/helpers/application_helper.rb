@@ -28,6 +28,10 @@ module ApplicationHelper
 	end
 
 	def active_class(link_path)
-	  current_page?(link_path) ? "active" : ""
+		current_page?(link_path) ? "active" : ""
+	end
+
+	def fa_spinner
+		'<i class="fa fa-spinner fa-pulse fa-fw"></i>'
 	end
 end

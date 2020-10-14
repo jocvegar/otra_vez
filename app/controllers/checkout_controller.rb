@@ -11,7 +11,7 @@ class CheckoutController < ApplicationController
 		@shipping_address = @order.build_address(address_params)
 
 		if @shipping_address.save
-			@order.update(timer_started: true, start_timer: DateTime.now)
+			@order.update(timer_started: true, start_timer: DateTime.now, end_timer: DateTime.now + 10.minutes)
 			redirect_to new_payment_path, notice: 'Dirección guardada!'
 		else
 			broadcast_errors @shipping_address, address_params

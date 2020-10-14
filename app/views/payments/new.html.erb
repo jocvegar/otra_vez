@@ -1,5 +1,21 @@
-<div id="timer" class="bg-primary text-white d-flex align-items-center justify-content-center">
-	Tienes 20 minutos para realizar esta compra
+<div id="timer" style="min-height: 3rem;" data-controller="shopping"
+  class="bg-primary text-white d-flex align-items-center justify-content-center">
+
+  <span class= "d-none" data-target="shopping.endTimer">
+    <%= @order.end_timer %>
+  </span>
+
+  <span data-target="shopping.banner">
+    Tiempo para realizar la compra: &nbsp;
+  </span>
+  <span data-target="shopping.output"></span>
+
+  <%= link_to extend_timer_path,
+    method: :patch,
+    class: "btn btn-outline-light btn-sm ml-5",
+    data: { disable_with: fa_spinner} do %>
+    Necesitas más tiempo?
+  <% end #unless order.time_extended %>
 </div>
 
 <div class="row py-5 bg-light">
@@ -44,37 +60,37 @@
           </ul>
         </div>
 
-
         <div class="col-md-7 col-lg-8">
           <h4 class="mb-3 text-dark">Transferencia</h4>
           <%= form_with(model: @payment, local: true) do |f| %>
             <div class="mb-4">
-				<div class="card">
-					<div class="card-body">
-						This is some text within a card body. <br>
-						Envia prueba de tu transferencia <br>
-						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, ex!
-					</div>
-				</div>
-				<br>
-              <label class="my-1">Envia prueba de tu transferencia</label>
+              <div class="card">
+                <div class="card-body">
+                  This is some text within a card body. <br>
+                  Envia prueba de tu transferencia <br>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, ex!
+                </div>
+              </div>
+               <br>
+              <label class="my-1 font-weight-bold">
+                Adjunta una captura con el comprobante de tu pago
+              </label>
               <div class="form-file">
                 <%= f.file_field :file, class: "form-file-input",
-                	id: "paymentFile" %>
-                <label class="form-file-label" for="paymentFile">
+                  id: "paymentFileUpload" %>
+                <label class="form-file-label" for="paymentFileUpload">
                   <span class="form-file-text">Seleccionar...</span>
                   <span class="form-file-button">Buscar</span>
                 </label>
               </div>
             </div>
             <br>
-
             <div class="row mt-4">
               <div class="col">
                 <%#= link_to "Cancelar", admin_products_path, class: "btn btn-outline-danger btn-block"  %>
               </div>
               <div class="col">
-                <%= f.submit "Salvar", class: "btn btn-outline-dark btn-block" %>
+                <%= f.submit "Salvar", class: "btn btn-outline-dark btn-block", data: { target: "shopping.submitButton" } %>
               </div>
             </div>
           <% end %>
@@ -86,14 +102,8 @@
 
 <%= render 'shared/footer' %>
 
-<style>
-	#timer{
-		min-height: 3rem;
-	}
-</style>
-
 <script>
-  $('#paymentFile').on('change',function(){
+  $('#paymentFileUpload').on('change',function(){
     let fileName = $(this).val().replace("C:\\fakepath\\", "");
     $('.form-file-text').html(fileName);
   })

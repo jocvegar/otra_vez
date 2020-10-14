@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 	resources :categorias
 	resources :checkout, except: [:destroy]
 	resources :payments, only: [:new, :create]
+	patch '/extend_timer' => 'payments#extend_timer'
 
 	namespace :admin do
 		get '/' => 'home#index'
