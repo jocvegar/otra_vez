@@ -101,7 +101,11 @@
               <br>
               <div class="row mt-4">
                 <div class="col">
-                  <%#= link_to "Cancelar orden", admin_products_path, class: "btn btn-outline-danger btn-block"  %>
+                  <%= link_to "Cancelar orden",
+                    payment_path(id: current_order.slug),
+                    method: :delete,
+                    data: { confirm: 'Seguro de cancelar la orden?' },
+                    class: "btn btn-outline-danger btn-block"  %>
                 </div>
                 <div class="col">
                   <%= f.submit "Salvar", class: "btn btn-outline-dark btn-block", data: { target: "shopping.submitButton" },disabled: true %>

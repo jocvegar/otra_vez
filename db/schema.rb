@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_011302) do
+ActiveRecord::Schema.define(version: 2020_10_15_225330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_10_13_011302) do
     t.boolean "timer_started", default: false
     t.datetime "start_timer"
     t.datetime "end_timer"
-    t.boolean "extended"
     t.boolean "time_extended", default: false
     t.index ["slug"], name: "index_orders_on_slug", unique: true
   end

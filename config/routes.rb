@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
 	resources :categorias
 	resources :checkout, except: [:destroy]
-	resources :payments, only: [:new, :create]
+	resources :payments, only: [:new, :create, :destroy]
 	patch '/extend_timer' => 'payments#extend_timer'
 
 	namespace :admin do

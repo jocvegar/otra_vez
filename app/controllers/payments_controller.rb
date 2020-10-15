@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :set_order, only: [:new, :create, :extend_timer]
+	before_action :set_order
 
 	def new
 		@order_items = @order.order_items.order("created_at DESC")
@@ -23,6 +23,12 @@ class PaymentsController < ApplicationController
 			  format.js
 			end
 		end
+	end
+
+	def destroy
+		@order.remove_associations
+		@order.update(timer_started: false, start_timer: nil, end_timer: nil, time_extended: false)
+		redirect_to root_path, notice: 'Muchas gracias por tu visita!'
 	end
 
 	private
