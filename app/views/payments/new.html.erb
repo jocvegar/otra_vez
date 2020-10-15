@@ -1,3 +1,4 @@
+<% subtotal = 0 %>
 <div data-controller="shopping">
   <div id="timer" style="min-height: 3rem;"
     class="bg-primary text-white d-flex align-items-center justify-content-center">
@@ -5,8 +6,8 @@
     <span class= "d-none" data-target="shopping.endTimer">
       <%= @order.end_timer %>
     </span>
-    <span class= "d-none" data-target="shopping.order">
-      <%= @order.id %>
+    <span class= "d-none" data-target="shopping.orderSlug">
+      <%= @order.slug %>
     </span>
 
     <span data-target="shopping.banner">
@@ -56,11 +57,13 @@
                       unit: "Lps. ", separator: ".", delimiter: ",") %>
                   </span>
                 </li>
+                <% subtotal += item.total_price %>
               <% end %>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Total</span>
+
                 <strong>
-                  <%= number_to_currency(current_order.subtotal,
+                  <%= number_to_currency(subtotal,
                     unit: "Lps. ", separator: ".", delimiter: ",") %>
                 </strong>
               </li>
@@ -98,7 +101,7 @@
               <br>
               <div class="row mt-4">
                 <div class="col">
-                  <%#= link_to "Cancelar", admin_products_path, class: "btn btn-outline-danger btn-block"  %>
+                  <%#= link_to "Cancelar orden", admin_products_path, class: "btn btn-outline-danger btn-block"  %>
                 </div>
                 <div class="col">
                   <%= f.submit "Salvar", class: "btn btn-outline-dark btn-block", data: { target: "shopping.submitButton" },disabled: true %>

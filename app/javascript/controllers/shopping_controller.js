@@ -1,7 +1,7 @@
 import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
-	static targets = [ "output", "endTimer", "banner", "moreTime", "submitButton", "order"]
+	static targets = [ "output", "endTimer", "banner", "moreTime", "submitButton", "orderSlug"]
 
 	connect() {
 		super.connect()
@@ -30,7 +30,7 @@ export default class extends ApplicationController {
 				_this.bannerTarget.innerHTML = "";
 				_this.submitButtonTarget.style.display = "none";
 				_this.moreTimeTarget.textContent = "";
-				_this.stimulate('Shopping#test', _this.orderTarget.textContent)
+				_this.stimulate('Shopping#test', _this.orderSlugTarget.textContent)
 				document.location.href="/";
 			}
 		}, 1000);
