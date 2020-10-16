@@ -14,6 +14,9 @@
 							Pronto te llegará
 							<strong>un correo</strong> con el resumen de tu compra.
 						</p>
+						<small>
+							Orden #: <%= @order.slug %>
+						</small>
 						<hr class="mx-5">
 						<p>
 							¿Tienes algun comentario?
@@ -21,16 +24,20 @@
 								Escribenos
 							</a>
 						</p>
+
 						<a class="text-danger mt-2 text-decoration-none"
 							href="https://www.instagram.com/o.t.r.a.v.e.z/"
-							target="_blank">
-							<i class="fab fa-instagram fa-3x"></i><br>
-							<span class="text-danger">
-								@o.t.r.a.v.e.z
+						 	target="_blank">
+							<span data-aos="fade-right">
+								<i class="fab fa-instagram fa-3x"></i>
+								<br>
+								<span class="text-danger">
+									@o.t.r.a.v.e.z
+								</span>
 							</span>
 						</a>
 					</div>
-					<p class="lead mt-3 mb-4">
+					<p class="lead mt-3 mb-4" data-aos="fade-left">
 						<a class="btn btn-primary btn-sm" href="/"
 							role="button">
 							Ir a inicio

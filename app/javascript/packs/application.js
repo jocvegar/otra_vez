@@ -11,6 +11,7 @@ require("channels")
 require("custom/pwa")
 require("custom/alert_message")
 require("custom/splide")
+require("custom/aos")
 require("bootstrap-table")
 
 import '../stylesheets/application.scss'
