@@ -7,7 +7,7 @@ es:
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
-        content_type_invalid: "tiene contenido invalid"
+        content_type_invalid: "tiene contenido no válido"
         image_metadata_missing: "no es una imagen válida"
   date:
     abbr_day_names:

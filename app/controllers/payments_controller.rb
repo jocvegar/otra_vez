@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
 	def create
 		@payment = current_order.build_payment(payment_params)
 		if @payment.save
-			redirect_to root_path, notice: 'NICE!!'
+			redirect_to gracias_path(id: @order.slug)
 		else
 			broadcast_errors @payment, payment_params
 		end
@@ -29,6 +29,9 @@ class PaymentsController < ApplicationController
 		@order.remove_associations
 		@order.update(timer_started: false, start_timer: nil, end_timer: nil, time_extended: false)
 		redirect_to root_path, notice: 'Muchas gracias por tu visita!'
+	end
+
+	def gracias
 	end
 
 	private
