@@ -16,6 +16,7 @@ export default class extends Controller {
 		el.select();
 		document.execCommand('copy');
 		document.body.removeChild(el);
+		document.getElementsByClassName("tooltip-inner")[0].innerText = "Copiado!"
 		if (selected) {
 			document.getSelection().removeAllRanges();
 			document.getSelection().addRange(selected);
