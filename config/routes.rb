@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 		get '/' => 'home#index'
 		resources :products
 		resources :soldout_products, only: [:index]
+		resources :orders
 	end
 
 	get 'test/index'

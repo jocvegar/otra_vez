@@ -1,0 +1,85 @@
+<%= render 'navigation_tabs', active: "orders" %>
+
+<div id="products" class="container">
+  <div class="table-responsive">
+    <h4 class="mb-4">Ordenes Nuevas</h4>
+    <div class="shadow-sm">
+      <% unless @orders.empty? %>
+        <div class="table-responsive">
+          <table id="orders-table"
+            class="table table-centered table-nowrap rounded table-hover align-middle"
+            data-toggle="table"
+            data-search="true">
+            <div class="btn-group float-right mt-3 mb-4">
+              <%= link_to "#",
+                class: "btn btn-sm btn-outline-success" do %>
+                <i class="far fa-file-excel"></i>
+                Exportar
+              <% end %>
+            </div>
+              <thead class="thead-light">
+                  <tr>
+                      <th class="border-0">#</th>
+                      <th class="border-0">Pago</th>
+                      <th class="border-0">Id</th>
+                      <th class="border-0">Más</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                <% @orders.each_with_index do |order, i| %>
+                  <tr id="order-<%= order.slug %>">
+                    <td class="border-0 text-black-50">
+                      <%= i + 1 %>
+                    </td>
+                    <td class="border-0">
+                      <%= link_to order.slug, admin_order_path(order),
+                        class: "text-decoration-none text-black-50" %>
+                    </td>
+                    <td class="border-0 font-weight-bold">
+                      <%= order.slug %>
+                    </td>
+
+                    <td class="border-0">
+                      <div class="btn-group">
+                        <button class="btn btn-link text-dark m-0 p-0"
+                          data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">
+                            <i class="fas fa-ellipsis-h fa-lg text-muted"></i>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <%= link_to admin_order_path(order),
+                              class: "dropdown-item" do %>
+                              <span class="fas fa-eye mr-2"></span>
+                              Ver Detalle
+                            <% end %>
+
+                            <%= link_to edit_admin_order_path(order), class: "dropdown-item" do %>
+                              <span class="fas fa-edit mr-2"></span>
+                              Editar
+                            <% end %>
+
+                            <%= link_to admin_order_path(order),
+                              method: :delete, remote: true,
+                              data: { confirm: "Seguro de borrar #{order.slug}?" },
+                              class: "dropdown-item text-danger"  do %>
+                              <span class="fas fa-trash-alt mr-2"></span>
+                              Eliminar
+                            <% end %>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+      <% else %>
+        <h4 class="text-muted text-center my-4">
+          No hay productos nuevos
+        </h4>
+      <% end %>
+    </div>
+  </div>
+</div>

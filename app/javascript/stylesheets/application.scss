@@ -10,3 +10,40 @@
 * {
 	// font-family: 'Oswald', sans-serif;
 }
+
+.callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 0.35rem;
+  background-color: #fff;
+
+  .callout-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+
+  h5 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  code {
+    border-radius: 3px;
+  }
+  & + .bs-callout {
+    margin-top: -5px;
+  }
+}
+
+@each $name,$color in (default,#f7f7f7),(primary,#0275d8),(success,#5cb85c),(danger,#721C24),(warning,#f0ad4e),(info,#5bc0de), (dark,#343A40) {
+	.callout-#{$name} {
+		border-left-color: $color;
+		h5 {
+			color: $color;
+		}
+	}
+}

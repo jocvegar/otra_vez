@@ -10,10 +10,11 @@
 				<hr>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">
-					<i class="mr-3 far fa-hand-peace"></i>
+				<%= link_to admin_orders_path,
+					class: "nav-link #{active_class('/admin/orders')}" do %>
+					<i class="mr-3 fas fa-tshirt"></i>
 					Ordenes
-				</a>
+				<% end %>
 				<hr>
 			</li>
 			<li class="nav-item">
