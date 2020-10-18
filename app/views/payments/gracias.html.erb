@@ -14,17 +14,23 @@
 							Pronto te llegará
 							<strong id="hola">un correo</strong> con el resumen de tu compra.
 						</p>
-						<small data-controller="clipboard">
-							Orden #:
-							<a href="#" class="link-success btn-clipboard"
-								data-action="clipboard#copy">
-								<span data-target="clipboard.source"
-									data-toggle="tooltip"
-									title="Copia tu orden">
-									<%= params[:id] %>
-								</span>
-							</a>
-						</small>
+						<div data-controller="clipboard"
+						  class="d-flex align-items-center
+						  justify-content-center py-2 lead">
+						  <p class="mb-0">
+						    Orden #:
+						    <span data-target="clipboard.source">
+						      <%= params[:id] %>
+						    </span>
+						  </p>
+						  <button type="button"
+						    class="btn btn-outline-success btn-sm ml-3"
+						    data-action="clipboard#copy"
+						    data-toggle="tooltip"
+						    title="Copia número de orden">
+						    Copiar
+						  </button>
+						</div>
 						<hr class="mx-5">
 						<p>
 							¿Tienes algun comentario?
