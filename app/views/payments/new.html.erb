@@ -76,14 +76,47 @@
               <div class="mb-4">
                 <div class="card">
                   <div class="card-body">
-                    This is some text within a card body. <br>
-                    Envia prueba de tu transferencia <br>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, ex!
+                    Puedes hacer tu depósito a nombre de Fernando Nieto<br>
+                    a cualquiera de las siguientes cuentas:<br>
+                    <br>
+                    <div data-controller="clipboard">
+                      BAC
+                      <a href="#" class="link-dark"
+                        data-action="clipboard#copy">
+                        <span data-target="clipboard.source"
+                          data-toggle="tooltip"
+                          title="Copia número de cuenta">
+                          721166891
+                        </span>
+                      </a>
+                    </div>
+                    <div data-controller="clipboard">
+                      FICOHSA
+                      <a href="#" class="link-dark"
+                        data-action="clipboard#copy">
+                        <span data-target="clipboard.source"
+                          data-toggle="tooltip"
+                          title="Copia número de cuenta">
+                          200010878615
+                        </span>
+                      </a>
+                    </div>
+                    <div data-controller="clipboard">
+                      ATLANTIDA
+                      <a href="#" class="link-dark"
+                        data-action="clipboard#copy">
+                        <span data-target="clipboard.source"
+                          data-toggle="tooltip"
+                          title="Copia número de cuenta">
+                          12820165178
+                        </span>
+                      </a>
+                    </div>
                   </div>
                 </div>
                  <br>
                 <label class="my-1 font-weight-bold">
-                  Adjunta una captura con el comprobante de tu pago
+                  Adjunta la captura con el comprobante de tu pago
                 </label>
                 <div class="form-file">
                   <%= f.file_field :file, class: "form-file-input",
