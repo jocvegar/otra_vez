@@ -30,7 +30,7 @@ export default class extends ApplicationController {
 				_this.bannerTarget.innerHTML = "";
 				_this.submitButtonTarget.style.display = "none";
 				_this.moreTimeTarget.textContent = "";
-				_this.stimulate('Shopping#test', _this.orderSlugTarget.textContent)
+				_this.stimulate('Shopping#clean_order', _this.orderSlugTarget.textContent)
 				document.location.href="/";
 			}
 		}, 1000);

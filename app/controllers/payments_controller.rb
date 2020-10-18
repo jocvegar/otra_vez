@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
 	def create
 		@payment = current_order.build_payment(payment_params)
 		if @payment.save
-			@order.remove_associations
+			@order.update(submitted: true)
 			session.delete(:order_id)
 			redirect_to gracias_path(id: @order.slug)
 		else

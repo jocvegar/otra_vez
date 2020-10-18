@@ -11,7 +11,7 @@
     </span>
 
     <span data-target="shopping.banner">
-      Tiempo para realizar la compra: &nbsp;
+      Tiempo restante: &nbsp;
     </span>
     <span data-target="shopping.output"></span>
 
@@ -21,7 +21,7 @@
         class: "btn btn-outline-light btn-sm ml-5",
         data: {
           disable_with: fa_spinner} do %>
-        Necesitas más tiempo?
+          Más tiempo?
       <% end unless @order.time_extended %>
     </div>
   </div>
@@ -77,7 +77,7 @@
                 <div class="card">
                   <div class="card-body">
                     Puedes hacer tu depósito a nombre de Fernando Nieto<br>
-                    a cualquiera de las siguientes cuentas:<br>
+                    a cualquiera de las siguientes cuentas bancarias:<br>
                     <br>
                     <div data-controller="clipboard">
                       BAC
