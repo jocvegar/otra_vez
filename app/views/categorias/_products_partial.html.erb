@@ -2,18 +2,20 @@
 	<div class="col-12 col-sm-4">
 		<div class="card mb-3 mx-auto">
 			<% if product.main_image.attached? %>
-				<%= link_to "#",
-					data: {toggle: "modal",
-						target: "#imageModal-#{product.slug}"}  do %>
-				  <%= image_tag product.main_image,
-				    class: "card-img-top px-3 py-3",
-				    style: 'height:17rem;max-width:auto;object-fit:fill;' %>
-				<% end %>
+				<div class="text-center">
+					<%= link_to "#",
+						data: {toggle: "modal",
+							target: "#imageModal-#{product.slug}"}  do %>
+					  <%= image_tag product.main_image,
+					    class: "card-img-top px-3 py-3",
+					    style: 'height:18rem;max-width:100%;width:auto;object-fit:fill;' %>
+					<% end %>
+				</div>
 				<%= render 'image_modal', product: product %>
 			<% else %>
 			  <%= image_tag 'otra_vez_blanco.jpg',
 			    class: "card-img-top px-3 py-3",
-			    style: 'height:17rem;width:auto;object-fit: fill;' %>
+			    style: 'height:18rem;width:auto;object-fit: fill;' %>
 			<% end %>
 			<div class="card-body">
 				<h6 class="card-subtitle"><%= product.title %></h6>

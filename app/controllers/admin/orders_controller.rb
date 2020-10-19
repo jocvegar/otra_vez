@@ -25,6 +25,7 @@ class Admin::OrdersController < ApplicationController
 
   def destroy
     @order.update(admin_order_params)
+    @order.return_products
     respond_to do |format|
       format.html { redirect_to admin_orders_path, error: 'Orden cancelada' }
     end
