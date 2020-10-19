@@ -6,24 +6,26 @@
 				<h5 class="modal-title py-3"
 					id="addedToCartLabel">
 					Producto Agregado
-					<i class="fas fa-check ml-2"></i>
+					<i class="text-success fas fa-check ml-2"></i>
 				</h5>
 			</div>
 
-			<div class="modal-footer">
-				<div class="row">
-					<div class="col-12 col-md-6">
-						<button type="button"class="btn btn-outline-secondary btn-block my-3"
-							data-dismiss="modal">
-							Continuar Comprando
-						</button>
-					</div>
-					<div class="col-12 col-md-6">
-						<%= link_to shopping_carts_path,
-							id: "shopping_cart",
-							class: "btn btn-dark btn-block my-3" do %>
-							Ver Carrito
-						<% end %>
+			<div class="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-6">
+							<button type="button"class="btn btn-outline-secondary btn-block my-3"
+								data-dismiss="modal">
+								Continuar Comprando
+							</button>
+						</div>
+						<div class="col-12 col-md-6">
+							<%= link_to shopping_carts_path,
+								id: "shopping_cart",
+								class: "btn btn-dark btn-block my-3" do %>
+								Ver Carrito
+							<% end %>
+						</div>
 					</div>
 				</div>
 			</div>

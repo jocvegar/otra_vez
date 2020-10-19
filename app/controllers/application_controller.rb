@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 	include ApplicationHelper
+	add_flash_types :success, :error, :info
 	before_action :set_action_cable_identifier
 	before_action :set_locale
 

@@ -9,23 +9,23 @@
           class="table table-centered table-nowrap rounded table-hover align-middle"
           data-toggle="table"
           data-search="true">
-          <div class="btn-group float-right mt-3 mb-4">
-            <%= link_to "#",
+          <!-- <div class="btn-group float-right mt-3 mb-4">
+            <%#= link_to "#",
               class: "btn btn-sm btn-outline-success" do %>
               <i class="far fa-file-excel"></i>
               Exportar
-            <% end %>
-          </div>
+            <%# end %>
+          </div> -->
             <thead class="thead-light">
                 <tr>
-                    <th class="border-0">#</th>
-                    <th class="border-0">Id</th>
-                    <th class="border-0">Captura?</th>
-                    <th class="border-0">Correo</th>
-                    <th class="border-0">
+                    <th data-sortable="true" class="border-0">#</th>
+                    <th data-sortable="true" class="border-0">Id</th>
+                    <th data-sortable="true" class="border-0">Items</th>
+                    <th data-sortable="true" class="border-0">Correo</th>
+                    <th data-sortable="true" class="border-0">
                       Fecha de Envío
                     </th>
-                    <th class="border-0">Total</th>
+                    <th data-sortable="true" class="border-0">Total</th>
                     <th class="border-0">Enviar</th>
                     <th class="border-0">Más</th>
                 </tr>
@@ -44,7 +44,7 @@
                   </td>
 
                   <td class="border-0">
-                    <%=  order.payment.file.attached? %>
+                    <%=  order.order_items.pluck(:quantity).reduce(:+) %>
                   </td>
 
                   <td class="border-0">
@@ -101,7 +101,7 @@
         </table>
       <% else %>
         <h4 class="text-muted text-center py-4 my-4">
-          No hay productos nuevos
+          No hay ordenes, ponete las pilas!
         </h4>
       <% end %>
     </div>

@@ -10,8 +10,9 @@
 			<div class="card-body">
 				<div class="row no-gutters align-items-center">
 					<div class="col mr-2">
-						<div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-							Pedidos nuevos
+						<div class="text-xs font-weight-bold text-uppercase mb-1">
+							<%= link_to "Ordenes nuevas", admin_orders_path,
+								class: "text-decoration-none text-dark" %>
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-black-50">
 							<%= @orders_new %>
@@ -30,7 +31,7 @@
 				<div class="row no-gutters align-items-center">
 					<div class="col mr-2">
 						<div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-							Pedidos total
+							Ordenes total
 						</div>
 						<div class="h5 mb-0 font-weight-bold text-black-50">
 							<%= @orders_total %>

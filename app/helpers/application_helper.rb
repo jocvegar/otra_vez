@@ -8,7 +8,7 @@ module ApplicationHelper
 	end
 
 	def bootstrap_class_for(flash_type)
-	  { success: "alert-success", error: "alert-danger", alert: "alert-warning", notice: "alert-dark" }[flash_type] || flash_type.to_s
+	  { success: "alert-success", error: "alert-danger", info: "alert-info", alert: "alert-warning", notice: "alert-dark" }[flash_type] || flash_type.to_s
 	end
 
 	def flash_messages
@@ -17,7 +17,7 @@ module ApplicationHelper
 				content_tag(:div, id: "flash-wrapper", class: "container-fluid", style: "padding-top:0.5rem;") do
 					concat(
 						content_tag(:div, message, class: "alert alert-dismissible #{bootstrap_class_for(msg_type.to_sym)}", role: "alert") do
-							concat content_tag(:button, '<span>&times;</span>'.html_safe, class: "close", data: { dismiss: 'alert' })
+							concat content_tag(:button, '<span></span>'.html_safe, class: "btn-close", data: { dismiss: 'alert' })
 							concat content_tag(:span, message.html_safe, class: 'message')
 						end
 					)

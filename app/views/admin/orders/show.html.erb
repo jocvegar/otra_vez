@@ -1,4 +1,177 @@
-<p id="notice"><%= notice %></p>
+<%= render 'navigation_tabs', active: "orders" %>
 
-<%= link_to 'Edit', edit_admin_order_path(@order) %> |
-<%= link_to 'Back', admin_orders_path %>
+<div id="product" class="container">
+	<div class="row">
+		<div class="col-12 col-md-8">
+			<h5>
+				<%= @order.payment.updated_at
+					.strftime("%e de %b %y @ %l:%M %p") %>
+			</h5>
+		</div>
+		<div class="col-12 col-md-4">
+			<%= link_to admin_orders_path,
+				class: "btn btn-outline-dark btn-sm float-right mr-1" do %>
+				<i class="fas fa-chevron-left"></i>
+				Regresar
+			<% end %>
+		</div>
+	</div>
+	<hr class="my-4">
+	<div class="row">
+		<div class="col-12 col-md-7">
+			<div class="text-center">
+				<figure class="figure">
+				<%= image_tag @order.payment.file,
+					class: "figure-img img-fluid rounded",
+					alt: "foto de deposito" %>
+					<figcaption class="figure-caption">
+						<%= link_to 'Descargar comprobante',
+							rails_blob_path(@order.payment.file,
+							disposition: "attachment"),
+							class: "text-decoration-none text-muted" %>
+
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+		<div class="col-12 col-md-5">
+			<ul class="list-group list-group-flush">
+			  <li class="list-group-item font-weight-bold">
+			  	<i class="text-muted mr-2 fas fa-user"></i>
+			  	<%= @order.address.username %>
+			  </li>
+			  <li class="list-group-item">
+			  	<i class="text-muted mr-2 fas fa-at"></i>
+			  	<%= @order.address.correo %>
+			  </li>
+			  <li class="list-group-item">
+			  	<i class="text-muted mr-2 fas fa-phone"></i>
+			  	<%= @order.address.telefono %>
+			  	<% unless @order.address.telefono_alternativo.empty? %>
+			  		<%= " / #{@order.address.telefono_alternativo}" %>
+			  	<% end %>
+			  </li>
+			  <li class="list-group-item">
+			  	<i class="text-muted mr-2 fas fa-map-marked-alt"></i>
+			  	<%= @order.address.one_line_format %>
+			  </li>
+			  <li class="list-group-item">
+			  	<i class="text-muted mr-2 fas fa-location-arrow"></i>
+			  	<%= @order.address.referencia %>
+			  </li>
+			  <li class="list-group-item">
+			  	<i class="text-muted mr-2 fas fa-book-open"></i>
+			  	<%= @order.address.notas %>
+			  </li>
+			</ul>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-12 my-3">
+			<table
+				class="table table-hover align-middle">
+			  	<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Foto</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Cantidad</th>
+						<th scope="col">P/U</th>
+						<th scope="col">SubTotal</th>
+					</tr>
+			  	</thead>
+				<tbody>
+					<% @order.order_items.each_with_index do |item, i| %>
+						<tr>
+							<th scope="row"><%= i + 1 %></th>
+							<td>
+								<% if item.product.main_image.attached? %>
+									<%= image_tag item.product.main_image,
+										class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+								<% else %>
+									<%= image_tag 'otra_vez_blanco.jpg',
+										class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+								<% end %>
+							</td>
+							<td><%= item.product.title %></td>
+							<td><%= item.quantity %></td>
+							<td style="min-width: 8rem;">
+								<%= number_to_currency(item.unit_price,
+							  		unit: "Lps. ", separator: ".",
+							  		delimiter: ",") %>
+							</td>
+							<td style="min-width: 8rem;">
+								<%= number_to_currency(item.total_price,
+							  		unit: "Lps. ", separator: ".",
+							  		delimiter: ",") %>
+						 	</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<div class="container mb-1">
+				<div class="row">
+					<div class="col-12 d-flex justify-content-end">
+						<h5 class="align-middle mr-5">Total</h5>
+						<h5 class="font-weight-bolder align-middle mx-5">
+							<%= number_to_currency(@order.subtotal_net,
+								unit: "Lps. ", separator: ".",
+								delimiter: ",") %>
+						</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="row mb-5">
+		<div class="col-12 col-md-6">
+			<button type="button" class="btn btn-block btn-danger my-3"
+				data-toggle="modal" data-target="#orderDecline">
+			  Cancelar orden
+			</button>
+		</div>
+		<div class="col-12 col-md-6">
+			<%= link_to admin_order_path, method: :patch,
+				data: { confirm: 'Confirmar'},
+				class: "btn btn-block btn-outline-dark my-3" do %>
+				Listo para envío
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="orderDecline" tabindex="-1"
+	aria-labelledby="orderDeclineLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="btn-close" data-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<%= form_with(model: [:admin, @order], local: true,
+				url: admin_order_path, method: "delete") do |form| %>
+				<div class="modal-body">
+					<div class="col-12">
+						<div class="mb-4">
+							<%= form.hidden_field(:declined, value: true ) %>
+							<%= label_tag(:reason_for_decline, "Dar una razón") %>
+							<%= form.text_field :reason_for_decline, class: "mt-2 form-control", required: true %>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-secondary"
+						data-dismiss="modal">
+						Regresar
+					</button>
+					<button type="submit" class="btn btn-dark">
+						Declinar
+					</button>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
