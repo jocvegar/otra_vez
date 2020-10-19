@@ -1,0 +1,62 @@
+<%= render 'admin/shared/order_navigation', active: "shipped_orders" %>
+
+<div id="shipped-orders" class="container">
+	<div class="table-responsive">
+		<h4 class="mb-4">Ordenes Enviadas</h4>
+			<div class="shadow-sm">
+				<% unless @orders.empty? %>
+					<table id="orders-table"
+						class="table table-centered table-nowrap rounded table-hover align-middle"
+						data-toggle="table"
+						data-search="true">
+					<!-- <div class="btn-group float-right mt-3 mb-4">
+					<%#= link_to "#",
+					class: "btn btn-sm btn-outline-success" do %>
+					<i class="far fa-file-excel"></i>
+					Exportar
+					<%# end %>
+					</div> -->
+					<thead class="thead-light">
+						<tr>
+							<th data-sortable="true" class="border-0">#</th>
+							<th data-sortable="true" class="border-0">Id</th>
+							<th data-sortable="true" class="border-0">Correo</th>
+							<th data-sortable="true" class="border-0">Dirreción</th>
+							<th data-sortable="true" class="border-0">
+								Fecha de Envío
+							</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% @orders.each_with_index do |order, i| %>
+							<tr id="new-order-<%= order.slug %>">
+								<td class="border-0 text-black-50">
+									<%= i + 1 %>
+								</td>
+								<td class="border-0 font-weight-bold"
+								  	style="min-width: 12rem;">
+								  	<%= link_to order.slug, admin_order_path(order),
+								    	class: "text-decoration-none text-black-50" %>
+								</td>
+								<td class="border-0">
+									<%= order.address.correo %>
+								</td>
+								<td class="border-0">
+									<%= order.address.one_line_format %>
+								</td>
+								<td class="border-0">
+									<%= order.updated_at.strftime("%e de %b %y @ %l:%M %p") %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% else %>
+				<h4 class="text-muted text-center py-4 my-4">
+					No has mandado nada!
+				</h4>
+			<% end %>
+		</div>
+	</div>
+</div>

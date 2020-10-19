@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 		resources :products
 		resources :soldout_products, only: [:index]
 		resources :orders
+		namespace :orders do
+			get 'shipped/index'
+			get 'declined/index'
+		end
 	end
 
 	get 'test/index'

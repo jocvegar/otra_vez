@@ -9,7 +9,6 @@ class Admin::OrdersController < ApplicationController
   def show
   end
 
-  # GET /admin/orders/1/edit
   def edit
   end
 
@@ -27,7 +26,7 @@ class Admin::OrdersController < ApplicationController
   def destroy
     @order.update(admin_order_params)
     respond_to do |format|
-      format.html { redirect_to admin_orders_path, alert: 'Orden cancelada' }
+      format.html { redirect_to admin_orders_path, error: 'Orden cancelada' }
     end
   end
 
