@@ -1,4 +1,4 @@
-<%= render 'admin/shared/order_navigation', active: "shipped_orders" %>
+<%= render 'admin/shared/order_navigation', active: "declined_orders" %>
 
 <div id="shipped-orders" class="container">
 	<div class="table-responsive">
@@ -50,7 +50,7 @@
 				</table>
 			<% else %>
 				<h4 class="text-muted text-center py-4 my-4">
-					No has mandado nada!
+					No declinado nada!
 				</h4>
 			<% end %>
 		</div>
