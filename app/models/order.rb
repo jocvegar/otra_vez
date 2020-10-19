@@ -14,6 +14,10 @@ class Order < ApplicationRecord
 		order_items.collect { |order_item| order_item.valid? ? (order_item.unit_price * order_item.quantity) : 0 }.sum
 	end
 
+	def subtotal_net
+		order_items.collect { |order_item| (order_item.unit_price * order_item.quantity) }.sum
+	end
+
 	def remove_associations
 		# we are doing this when purchase time has expired or denied
 		self.address.destroy

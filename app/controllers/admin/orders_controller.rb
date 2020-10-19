@@ -5,7 +5,7 @@ class Admin::OrdersController < ApplicationController
   # GET /admin/orders
   # GET /admin/orders.json
   def index
-    @orders = Order.all
+    @orders ||= Order.where(submitted: true, shipped: false, declined: false).order("updated_at DESC")
   end
 
   # GET /admin/orders/1
