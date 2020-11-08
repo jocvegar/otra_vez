@@ -16,14 +16,23 @@ class Product < ApplicationRecord
 	end
 
 	def self.options
-	  return %w(polo manga_larga camiseta gorra camisa shorts sin_mangas)
+	  return %w(polo manga_larga camiseta gorra camisa shorts sin_mangas pantalon)
 	end
 
 	def self.sizes
-	  return %w(xxs xs s m l xl fits_all)
+	  return %w(fits_all xxs xs s m l xl 2xl 3xl 4xl 26 28 30 32 34 36 38 40)
 	end
+
+	def self.fits_like
+	  return %w(real xxs xs s m l xl 2xl 3xl 4xl 26 28 30 32 34 36 38 40)
+	end
+
 
 	def self.categories
 		return %w(hombre mujer unisex otro)
+	end
+
+	def self.subcategories
+		return %w(adulto niño youth otro)
 	end
 end

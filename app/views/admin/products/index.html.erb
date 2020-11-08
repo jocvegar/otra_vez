@@ -1,6 +1,6 @@
 <%= render 'navigation_tabs', active: "products" %>
 
-<div id="products" class="container">
+<div id="products" class="container-fluid">
   <div class="table-responsive">
     <h4 class="mb-2">Producto Activo
       <%= link_to 'Agregar', new_admin_product_path,
@@ -15,10 +15,13 @@
           <th data-sortable="true" scope="col">#</th>
           <th scope="col">Foto</th>
           <th data-sortable="true" scope="col">Nombre</th>
+          <th data-sortable="true" scope="col">Marca</th>
           <th data-sortable="true" scope="col">Cantidad</th>
           <th data-sortable="true" scope="col">Categoría</th>
+          <th data-sortable="true" scope="col">SubCategoría</th>
           <th data-sortable="true" scope="col">Tipo</th>
           <th data-sortable="true" scope="col">Tamaño</th>
+          <th data-sortable="true" scope="col">Fits like</th>
           <th scope="col">Editar</th>
           <th scope="col">Borrar</th>
         </tr>
@@ -27,20 +30,23 @@
         <% @products.each_with_index do |product, i| %>
           <tr>
             <th scope="row"><%= i + 1 %></th>
-            <td>
+            <td class="text-center">
               <% if product.main_image.attached? %>
                 <%= image_tag product.main_image,
-                  class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+                  class: "img-thumbnail", style: 'height:4rem;width:auto' %>
               <% else %>
                 <%= image_tag 'otra_vez_blanco.jpg',
-                  class: "img-thumbnail", style: 'height:4vw;width:auto' %>
+                  class: "img-thumbnail", style: 'height:4rem;width:auto' %>
               <% end %>
             </td>
             <td><%= product.title %></td>
+            <td><%= product.brand ? product.brand : "-" %></td>
             <td><%= product.quantity %></td>
             <td><%= product.category&.humanize %></td>
+            <td><%= product.subcategory&.humanize %></td>
             <td><%= product.option&.humanize %></td>
             <td><%= product.size&.humanize&.upcase %></td>
+            <td><%= product.fit&.humanize&.upcase %></td>
             <td>
               <%= link_to edit_admin_product_path(id: product.slug) do %>
                 <i class="text-muted fas fa-cog"></i>

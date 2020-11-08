@@ -7,14 +7,14 @@
 						data: {toggle: "modal",
 							target: "#imageModal-#{product.slug}"}  do %>
 					  <%= image_tag product.main_image,
-					    class: "card-img-top px-3 py-3",
+					    class: "card-img-top px-3 py-3 rounded",
 					    style: 'height:18rem;max-width:100%;width:auto;object-fit:fill;' %>
 					<% end %>
 				</div>
 				<%= render 'image_modal', product: product %>
 			<% else %>
 			  <%= image_tag 'otra_vez_blanco.jpg',
-			    class: "card-img-top px-3 py-3",
+			    class: "card-img-top px-3 py-3 rounded",
 			    style: 'height:18rem;width:auto;object-fit: fill;' %>
 			<% end %>
 			<div class="card-body">

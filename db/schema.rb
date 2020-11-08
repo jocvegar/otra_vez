@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_154751) do
+ActiveRecord::Schema.define(version: 2020_11_07_203732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,9 @@ ActiveRecord::Schema.define(version: 2020_10_19_154751) do
     t.string "option"
     t.integer "quantity"
     t.string "size"
+    t.string "brand"
+    t.string "fit"
+    t.string "subcategory"
     t.index ["slug"], name: "index_products_on_slug", unique: true
   end
 

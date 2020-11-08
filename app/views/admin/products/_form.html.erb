@@ -1,8 +1,14 @@
 <div class="container">
   <%= form_with(model: [:admin, product], local: true) do |f| %>
-    <div class="mb-4">
-      <%= label_tag(:title, "Nombre") %>
-      <%= f.text_field :title, class: "form-control", required: true %>
+    <div class="row mb-4">
+      <div class="col-12 col-md-6 mb-4">
+        <%= label_tag(:title, "Nombre") %>
+        <%= f.text_field :title, class: "form-control", required: true %>
+      </div>
+      <div class="col-12 col-md-6">
+        <%= label_tag(:brand, "Marca") %>
+        <%= f.text_field :brand, class: "form-control" %>
+      </div>
     </div>
 
     <div class="row">
@@ -36,6 +42,17 @@
 
       <div class="col-12 col-md-4">
         <div class="mb-4">
+          <%= label_tag(:subcategory, "Subcategoría") %>
+          <% categories = Product.subcategories.
+            map { |subcategory| [subcategory.humanize, subcategory] } %>
+          <%= f.select(:subcategory, options_for_select(categories,
+            :selected => f.object.subcategory), {include_blank: true},
+            class: "form-select") %>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="mb-4">
           <%= label_tag(:option, "Opción") %>
           <% options = Product.options.
             map { |product| [product.humanize, product] } %>
@@ -44,6 +61,7 @@
             {include_blank: true}, class: "form-select", required: true) %>
         </div>
       </div>
+
       <div class="col-12 col-md-4">
         <div class="mb-4">
           <%= label_tag(:size, "Tamaño") %>
@@ -54,10 +72,21 @@
             {include_blank: true}, class: "form-select", required: true) %>
         </div>
       </div>
+
+      <div class="col-12 col-md-4">
+        <div class="mb-4">
+          <%= label_tag(:fit, "Fits like") %>
+          <% sizes = Product.fits_like.
+            map { |size| [size.humanize.upcase, size] } %>
+          <%= f.select(:fit, options_for_select(sizes,
+            :selected => f.object.fit),
+            {include_blank: true}, class: "form-select") %>
+        </div>
+      </div>
     </div>
 
     <div class="mb-4">
-      <label >Foto</label>
+      <label >Foto principal</label>
       <div class="form-file">
         <%= f.file_field :main_image, class: "form-file-input", id: "productImage" %>
         <label class="form-file-label" for="productImage">
