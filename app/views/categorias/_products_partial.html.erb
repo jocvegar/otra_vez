@@ -1,6 +1,6 @@
 <% products.each do |product| %>
 	<div class="col-12 col-sm-4">
-		<div class="card mb-3 mx-auto">
+		<div class="cardd mb-3 mx-auto">
 			<% if product.main_image.attached? %>
 				<div class="text-center">
 					<%= link_to "#",
@@ -18,13 +18,24 @@
 			    style: 'height:18rem;width:auto;object-fit: fill;' %>
 			<% end %>
 			<div class="card-body">
-				<h6 class="card-subtitle"><%= product.title %></h6>
+				<h6 class="card-subtitle">
+					<%= product.title %>
+					<small><%= product.brand %></small>
+				</h6>
 				<p class="card-title font-weight-bolder d-flex justify-content-between">
 					<span>
 						<%= number_to_currency(product.price, unit: "Lps. ", separator: ".", delimiter: ",") %>
 					</span>
 					<span class="h5 font-weight-normal text-secondary">
 						<%= product.size.humanize.upcase %>
+					</span>
+				</p>
+				<p class="card-title font-weight-bolder d-flex justify-content-between">
+					<span class="h6 font-weight-normal text-secondary">
+						<%= product.subcategory ? product.subcategory&.humanize : "Adulto" %>
+					</span>
+					<span class="h6 font-weight-normal text-secondary">
+						<%= product.fit ? "queda como #{ product.fit&.humanize}" : "Tamaño real"%>
 					</span>
 				</p>
 
