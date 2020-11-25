@@ -3,8 +3,11 @@
 <div id="products" class="container-fluid">
   <div class="table-responsive">
     <h4 class="mb-2">Producto Activo
-      <%= link_to 'Agregar', new_admin_product_path,
-        class: "float-right btn btn-outline-dark mb-4" %>
+      <%= link_to new_admin_product_path,
+        class: "float-right btn btn-outline-dark mb-4" do %>
+        <i class="fas fa-plus"></i>
+        Agregar
+      <% end %>
     </h4>
     <table
       data-toggle="table"

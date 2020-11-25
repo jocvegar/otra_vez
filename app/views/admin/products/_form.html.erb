@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5">
   <%= form_with(model: [:admin, product], local: true) do |f| %>
     <div class="row mb-4">
       <div class="col-12 col-md-6 mb-4">
@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-6">
         <div class="mb-4">
           <%= label_tag(:size, "Tamaño") %>
           <% sizes = Product.sizes.
@@ -73,7 +73,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-4">
+      <div class="col-12 col-md-6">
         <div class="mb-4">
           <%= label_tag(:fit, "Fits like") %>
           <% sizes = Product.fits_like.
@@ -85,15 +85,32 @@
       </div>
     </div>
 
-    <div class="mb-4">
-      <label >Foto principal</label>
-      <div class="form-file">
-        <%= f.file_field :main_image, class: "form-file-input", id: "productImage" %>
-        <label class="form-file-label" for="productImage">
-          <span class="form-file-text">Seleccionar...</span>
-          <span class="form-file-button">Buscar</span>
-        </label>
+    <div class="row">
+      <div class="col-8">
+        <div class="mb-4">
+          <label >Foto principal</label>
+          <div class="form-file">
+            <%= f.file_field :main_image, class: "form-file-input", id: "productImage" %>
+            <label class="form-file-label" for="productImage">
+              <span class="form-file-text">Seleccionar o cambiar...</span>
+              <span class="form-file-button">Buscar</span>
+            </label>
+          </div>
+        </div>
       </div>
+
+      <% if f.object.main_image.attached? %>
+        <div class="col-4 text-center">
+          <figure class="figure">
+            <%= image_tag f.object.main_image,
+              class: "figure-img img-fluid rounded",
+              style: 'height:4rem;width:auto' %>
+            <figcaption class="figure-caption">
+              Imagen actual
+            </figcaption>
+          </figure>
+        </div>
+      <% end %>
     </div>
     <br>
     <div class="row mt-4">
@@ -109,7 +126,7 @@
 
 <script>
   $('#productImage').on('change',function(){
-    let fileName = $(this).val();
+    let fileName = $(this).val().replace("C:\\fakepath\\", "");
     $('.form-file-text').html(fileName);
   })
 </script>
