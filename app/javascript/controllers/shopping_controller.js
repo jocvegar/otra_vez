@@ -43,4 +43,8 @@ export default class extends ApplicationController {
 			this.submitButtonTarget.disabled = true
 		}
 	}
+
+	clearOnClose() {
+		this.stimulate('Shopping#clean_order', this.orderSlugTarget.textContent)
+	}
 }

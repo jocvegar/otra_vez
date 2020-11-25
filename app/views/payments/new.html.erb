@@ -1,5 +1,6 @@
 <% subtotal = 0 %>
-<div data-controller="shopping">
+<div data-controller="shopping"
+  data-action="beforeunload@window->shopping#clearOnClose">
   <div id="timer" style="min-height: 3rem;"
     class="bg-primary text-white d-flex align-items-center justify-content-center">
 
