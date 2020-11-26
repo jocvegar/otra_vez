@@ -29,4 +29,6 @@ Rails.application.routes.draw do
 	end
 
 	get 'test/index'
+
+	match "*path" => "home#index", via: [:get, :post]
 end

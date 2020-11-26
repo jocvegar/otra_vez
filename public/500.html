@@ -1,66 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>Lo sentimos, hubo un error</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+  rel="stylesheet">
+
+<body class="bg-gray-100 flex flex-col min-h-screen">
+  <div class="container mx-auto flex-1">
+    <img src="./images/logo.png" alt="logo.png" class="w-64 mx-auto mt-12">
+    <div class="h-auto flex flex-col md:flex-row items-center">
+        <div id="bm" class="w-2/4">
+        </div>
+        <div class="px-12 text-center md:text-left">
+            <p class="font-sans text-2xl font-bold  subpixel-antialiased ">
+                Lo sentimos mucho. <br> Nuestro equipo de
+                <span class="line-through">abej</span>
+                ingenieros ha sido notificado y estan trabajando para arreglar el error.
+            </p>
+        </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
+  <footer>
+    <div class="flex justify-center border-t-2 bg-black py-2">
+      <a href="https://www.otravez.shop">
+        <img src="./images/OV.jpg" alt="logo.png" class="w-20 mx-auto">
+      </a>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"
+    integrity="sha512-m0RQU4SBx0p/bLwRiI4fJBGRafVLZ4s86wRe1+OAx5EXbcWiS/X1jvYdJQRD8jOoIVl+WTyVeMawUWVCh1O8+Q=="
+    crossorigin="anonymous"></script>
+
+  <script>
+    var animation = bodymovin.loadAnimation({
+      container: document.getElementById('bm'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'data3.json'
+    })
+  </script>
 </body>
 </html>
