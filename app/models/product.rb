@@ -16,7 +16,7 @@ class Product < ApplicationRecord
 	end
 
 	def self.options
-	  return %w(polo manga_larga camiseta gorra camisa shorts sin_mangas pantalon)
+	  return %w(polo manga_larga camiseta gorra camisa shorts sin_mangas pantalon otro)
 	end
 
 	def self.sizes

@@ -10,7 +10,6 @@ module CategoriasHelper
 		end
 	end
 
-
 	def filter_link_sizes(parameter, attribute = nil)
 		link_to params.permit(:cat, :option, :open_size, :size).
 			merge(cat: params['cat'], option: params['option'], size: attribute, open_size: true),

@@ -29,27 +29,23 @@
 			</h2>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-6 my-2 order-2">
-				<div class="row">
-					<div class="col-12 mb-2">
-						<div class="d-flex flex-column align-items-center justify-content-end div-image chavo">
-							<%= link_to "HOMBRE",categorias_path(cat: "hombre"),
-								class: "btn btn-light mb-4 px-4" %>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12" style="margin:0.75rem 0">
-						<div class="d-flex flex-column align-items-center justify-content-end div-image wacho">
-							<%= link_to "OTRO",categorias_path(cat: "otro"),
-								class: "btn btn-light mb-4 px-4" %>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-12 col-md-6 my-2 order-1">
+			<div class="col-12 col-md-6 my-2">
 				<div class="d-flex flex-column align-items-center justify-content-end div-image chava">
 					<%= link_to "MUJER",categorias_path(cat: "mujer"),
+						class: "btn btn-light mb-4 px-4" %>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 my-2">
+				<div class="d-flex flex-column align-items-center justify-content-end div-image chavo">
+					<%= link_to "HOMBRE",categorias_path(cat: "hombre"),
+						class: "btn btn-light mb-4 px-4" %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12" style="margin:0.75rem 0">
+				<div class="d-flex flex-column align-items-center justify-content-end div-image otro">
+					<%= link_to "OTRO",categorias_path(cat: "otro"),
 						class: "btn btn-light mb-4 px-4" %>
 				</div>
 			</div>
@@ -114,19 +110,22 @@
 }
 
 .chava {
-	height: 95vh;
+	height: 80vh;
 	filter: brightness(100%);
-	background-image: url(<%= image_path('chava.jpg') %>);
+	background-image: url(<%= image_path('chava2.jpg') %>);
+	background-size: contain;
 }
 
 .chavo {
-	height: 50vh;
+	height: 80vh;
 	filter: brightness(100%);
-	background-image: url(<%= image_path('chavo.jpg') %>);
+	background-image: url(<%= image_path('chavo2.jpg') %>);
+	background-size: contain;
 }
-.wacho {
-	height: 42vh;
+.otro {
+	height: 40vh;
 	filter: brightness(100%);
-	background-image: url(<%= image_path('wacho.jpg') %>);
+	background-image: url(<%= image_path('otro2.jpg') %>);
+	background-size: contain;
 }
 </style>
