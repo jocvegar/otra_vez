@@ -45,7 +45,10 @@ export default class extends ApplicationController {
 	}
 
 	clearOnClose() {
-		// this.stimulate('Shopping#clean_order', this.orderSlugTarget.textContent)
-		console.log("I was being called");
+		this.stimulate('Shopping#clean_order', this.orderSlugTarget.textContent)
+	}
+
+	allowOrder() {
+		setTimeout(this.element.dataset.action = null, 5000);
 	}
 }

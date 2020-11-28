@@ -160,8 +160,16 @@
                     class: "btn btn-outline-danger btn-block"  %>
                 </div>
                 <div class="col">
-                  <%= f.submit "Salvar", class: "btn btn-outline-dark btn-block", data: { target: "shopping.submitButton",
-                     disable_with: fa_spinner }, disabled: true %>
+                  <%= button_tag type: 'submit',
+                    class: 'btn btn-outline-dark btn-block',
+                      data: {
+                        disable_with: fa_spinner,
+                        target: "shopping.submitButton",
+                        action: "click->shopping#allowOrder"
+                      },
+                      disabled: true do %>
+                    Salvar
+                  <% end %>
                 </div>
               </div>
             <% end %>
