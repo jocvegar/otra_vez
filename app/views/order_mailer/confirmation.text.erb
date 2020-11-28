@@ -1,1 +1,21 @@
-confirmation.text.erb
+¡Hola <%= @order.address.username %>!
+********************************************
+
+Tu orden <%= @order.slug %> esta siendo procesada.
+
+Resumen:
+
+<% subtotal = 0 %>
+<% @order.order_items.each do |item| %>
+	- <%= item.product.title %> X <%= item.quantity %>
+	<% subtotal += item.total_price %>
+<% end %>
+
+Total:
+
+<%= number_to_currency(subtotal,
+unit: "Lps. ", separator: ".", delimiter: ",") %>
+
+********************************************
+
+Este mensaje se dirige exclusivamente a su destinatario. Contiene información CONFIDENCIAL sometida a secreto profesional o cuya divulgación está prohibida por la ley. Si ha recibido este mensaje por error, debe saber que su lectura, copia y uso están prohibidos. Le rogamos que nos lo comunique inmediatamente por esta misma vía o por teléfono y proceda a su destrucción.
