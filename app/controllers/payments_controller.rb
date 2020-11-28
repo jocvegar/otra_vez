@@ -13,16 +13,12 @@ class PaymentsController < ApplicationController
 			@order.update(submitted: true)
 			redirect_to gracias_path(id: @order.slug)
 			OrderMailer.confirmation(@order.slug).deliver_later
+			OrderMailer.notify_owner(@order.slug).deliver_later
 			session.delete(:order_id)
 			# SendOrderConfirmationEmailJob.perform_later(@order.slug)
 		else
 			broadcast_errors @payment, payment_params
 		end
-	end
-
-	def test
-		order = Order.friendly.find(params[:id])
-		OrderMailer.notify_owner(order.slug).deliver_later
 	end
 
 	def extend_timer
