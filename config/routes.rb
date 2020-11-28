@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 	resources :payments, only: [:new, :create, :destroy]
 	patch '/extend_timer' => 'payments#extend_timer'
 	get '/gracias/:id' => 'payments#gracias', as: "gracias"
+	get '/test/:id' => 'payments#test', as: "email_test"
 
 	namespace :admin do
 		get '/' => 'home#index'

@@ -1,0 +1,18 @@
+Cheleeee!
+********************************************
+
+Orden nueva <%= @order.slug %>
+
+<%= admin_order_url(@order.slug) %>
+
+Información:
+
+	correo: <%= @order.address.correo %>
+
+	total: <%= @order.subtotal %>
+
+	dirección: <%= @order.address.one_line_format %>
+
+********************************************
+
+Este mensaje se dirige exclusivamente a su destinatario. Contiene información CONFIDENCIAL sometida a secreto profesional o cuya divulgación está prohibida por la ley. Si ha recibido este mensaje por error, debe saber que su lectura, copia y uso están prohibidos. Le rogamos que nos lo comunique inmediatamente por esta misma vía o por teléfono y proceda a su destrucción.

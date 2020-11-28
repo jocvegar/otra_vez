@@ -20,6 +20,11 @@ class PaymentsController < ApplicationController
 		end
 	end
 
+	def test
+		order = Order.friendly.find(params[:id])
+		OrderMailer.notify_owner(order.slug).deliver_later
+	end
+
 	def extend_timer
 		if @order.update(end_timer: @order.end_timer + 10.minutes, time_extended: true)
 			respond_to do |format|

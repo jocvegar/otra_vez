@@ -4,4 +4,9 @@ class OrderMailerPreview < ActionMailer::Preview
 		@order = Order.last
 		OrderMailer.confirmation(@order.slug)
 	end
+
+	def notify_owner
+		@order = Order.last
+		OrderMailer.notify_owner(@order.slug)
+	end
 end

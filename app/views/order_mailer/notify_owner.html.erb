@@ -1,0 +1,49 @@
+<div class="email-body" style="
+    background-color: #fff;
+    margin: 0 auto;
+    display: block;
+    max-width: 600px;
+    box-shadow: 0px 3px 10px #999">
+	<header style="padding: 1.5em 0;border-bottom: 1px solid #aaa;">
+		<%= link_to root_url do %>
+		<img src="https://i.ibb.co/Pr811Nx/otra-vez-blanco.jpg"
+			alt="" border="0"
+			style="display:block;margin:0 auto;width:5em;">
+		<% end %>
+	</header>
+	<style>
+		ul {
+		  list-style: none; /* Remove list bullets */
+		  padding: 0;
+		  margin: 0;
+		}
+	</style>
+
+	<div class="content" style="padding: 10px 20px;
+			border-bottom: 1px solid #aaa;">
+		<h3>Cheleeee!</h3>
+		<p>
+			Orden nueva
+			<strong>
+				<%= link_to @order.slug, admin_order_url(@order.slug) %>
+			</strong>
+		</p>
+		<h4>Información:</h4>
+		<ul>
+			<li>
+				correo: <%= @order.address.correo %>
+			</li>
+			<li>
+				total: <%= @order.subtotal %>
+			</li>
+			<li>
+				dirección: <%= @order.address.one_line_format %>
+			</li>
+		</ul>
+	</div><!-- content -->
+	<footer style="padding: 0 20px 5px;clear:both;">
+		<p><small>
+			Este mensaje se dirige exclusivamente a su destinatario. Contiene información CONFIDENCIAL sometida a secreto profesional o cuya divulgación está prohibida por la ley. Si ha recibido este mensaje por error, debe saber que su lectura, copia y uso están prohibidos. Le rogamos que nos lo comunique inmediatamente por esta misma vía o por teléfono y proceda a su destrucción.
+		</small></p>
+	</footer>
+</div><!-- email-body -->
