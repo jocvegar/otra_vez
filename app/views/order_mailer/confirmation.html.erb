@@ -1,0 +1,55 @@
+<div class="email-body" style="
+    background-color: #fff;
+    margin: 0 auto;
+    display: block;
+    max-width: 600px;
+    box-shadow: 0px 3px 10px #999">
+	<header style="padding: 1.5em 0;border-bottom: 1px solid #aaa;">
+		<%= link_to root_url do %>
+		<%= image_tag 'otra_vez_blanco.jpg',
+			style: 'display:block;margin:0 auto;width:5em;',
+			alt: 'OtraVez' %>
+		<% end %>
+	</header>
+	<style>
+		ul {
+		  list-style: none; /* Remove list bullets */
+		  padding: 0;
+		  margin: 0;
+		}
+	</style>
+
+	<div class="content" style="padding: 10px 20px;
+			border-bottom: 1px solid #aaa;">
+		<h3>¡Hola <%= @order.address.username %>!</h3>
+		<p>
+			Tu orden <strong><%= @order.slug %></strong> esta siendo procesada.
+		</p>
+		<h4>Resumen:</h4>
+		<ul>
+			<% subtotal = 0 %>
+			<% @order.order_items.each do |item| %>
+				<li id="check-out-order-item-<%= item.id %>">
+					<div>
+						<p class="my-0">
+							<%= item.product.title %> X <%= item.quantity %>
+						</p>
+					</div>
+
+				</li>
+				<% subtotal += item.total_price %>
+			<% end %>
+			<hr style="margin:.25rem;">
+			<h3 style="text-align: right;">
+				<span style="margin-right: 1rem;">Total:</span>
+				<%= number_to_currency(subtotal,
+				unit: "Lps. ", separator: ".", delimiter: ",") %>
+			</h3>
+		</ul>
+	</div><!-- content -->
+	<footer style="padding: 0 20px 5px;clear:both;">
+		<p><small>
+			Este mensaje se dirige exclusivamente a su destinatario. Contiene información CONFIDENCIAL sometida a secreto profesional o cuya divulgación está prohibida por la ley. Si ha recibido este mensaje por error, debe saber que su lectura, copia y uso están prohibidos. Le rogamos que nos lo comunique inmediatamente por esta misma vía o por teléfono y proceda a su destrucción.
+		</small></p>
+	</footer>
+</div><!-- email-body -->
