@@ -32,6 +32,6 @@ module ApplicationHelper
 	end
 
 	def fa_spinner
-		'<i class="fa fa-spinner fa-pulse fa-fw"></i>'
+		'<i class="fa fa-spinner fa-pulse fa-fw"></i>'.html_safe
 	end
 end
