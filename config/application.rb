@@ -29,6 +29,10 @@ module OtraVez
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Jobs performed asynchronously will be handled by Sidekiq
+    # config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = Rails.env.production? ? :sidekiq : :async
+
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.time_zone =  "Central America"

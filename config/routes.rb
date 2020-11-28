@@ -1,4 +1,11 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+
+	# Sidekiq Worker Manager
+	authenticate :admin do
+		mount Sidekiq::Web, at: '/admin/sidekiq-manager'
+	end
 
 	root 'home#index'
 	resources :order_items
