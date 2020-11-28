@@ -11,9 +11,9 @@ class PaymentsController < ApplicationController
 		@payment = current_order.build_payment(payment_params)
 		if @payment.save
 			@order.update(submitted: true)
-			session.delete(:order_id)
 			redirect_to gracias_path(id: @order.slug)
 			OrderMailer.confirmation(@order.slug).deliver_later
+			session.delete(:order_id)
 			# SendOrderConfirmationEmailJob.perform_later(@order.slug)
 		else
 			broadcast_errors @payment, payment_params
