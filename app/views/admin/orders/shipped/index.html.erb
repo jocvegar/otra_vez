@@ -40,7 +40,7 @@
 								    	class: "text-decoration-none text-black-50" %>
 								</td>
 								<td class="border-0">
-									<%= order.address.correo %>
+									<%= order&.address&.correo %>
 								</td>
 								<td class="border-0">
 									<%= order.address.one_line_format %>
