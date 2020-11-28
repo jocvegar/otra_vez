@@ -38,11 +38,11 @@
 			<ul class="list-group list-group-flush">
 			  <li class="list-group-item font-weight-bold">
 			  	<i class="text-muted mr-2 fas fa-user"></i>
-			  	<%= @order.address.username %>
+			  	<%= @order&.address&.username %>
 			  </li>
 			  <li class="list-group-item">
 			  	<i class="text-muted mr-2 fas fa-at"></i>
-			  	<%= @order.address.correo %>
+			  	<%= @order&.address&.correo %>
 			  </li>
 			  <li class="list-group-item">
 			  	<i class="text-muted mr-2 fas fa-phone"></i>
