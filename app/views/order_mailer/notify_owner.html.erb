@@ -28,6 +28,14 @@
 				<%= link_to @order.slug, admin_order_url(@order.slug) %>
 			</strong>
 		</p>
+
+		<% if @order.payment_method == "compra_click" %>
+			<h3>
+				Esta orden es compra click! Hacer y enviar link a
+				<strong><%= @order.address&.telefono %></strong>
+			</h3>
+		<% end %>
+
 		<h4>Información:</h4>
 		<ul>
 			<li>

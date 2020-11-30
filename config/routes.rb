@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
 	resources :categorias
 	resources :checkout, except: [:destroy]
-	resources :payments, only: [:new, :create, :destroy]
+	resources :payments, only: [:new, :create, :destroy] do
+		collection { post 'compra_click' }
+	end
 	patch '/extend_timer' => 'payments#extend_timer'
 	get '/gracias/:id' => 'payments#gracias', as: "gracias"
 

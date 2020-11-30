@@ -20,18 +20,33 @@
 	<div class="row">
 		<div class="col-12 col-md-7">
 			<div class="text-center">
-				<figure class="figure">
-				<%= image_tag @order.payment.file,
-					class: "figure-img img-fluid rounded",
-					alt: "foto de deposito" %>
-					<figcaption class="figure-caption">
-						<%= link_to 'Descargar comprobante',
-							rails_blob_path(@order.payment.file,
-							disposition: "attachment"),
-							class: "text-decoration-none text-muted" %>
+				<% if @order.payment.payment_method == "compra_click" %>
+					<p class="text-center">
+						Order solicitada con compra click
+					</p>
 
-					</figcaption>
-				</figure>
+					<% if @browser.device.mobile? %>
+					  	<a href="https://wa.me/+504<%= @order.address.telefono.tr(" \t\r\n", '').gsub(/[-!?¿¡.\/,&()]/, '') %>" target="_blank">
+					  		<%= @order.address.telefono %>
+					  	</a>
+					<% else %>
+						<a href="https://api.whatsapp.com/send?phone=+504<%= @order.address.telefono.tr(" \t\r\n", '').gsub(/[-!?¿¡.\/,&()]/, '') %>" target="_blank">
+							<%= @order.address.telefono %>
+						</a>
+					<% end %>
+				<% else %>
+					<figure class="figure">
+					<%= image_tag @order.payment.file,
+						class: "figure-img img-fluid rounded",
+						alt: "foto de deposito" %>
+						<figcaption class="figure-caption">
+							<%= link_to 'Descargar comprobante',
+								rails_blob_path(@order.payment.file,
+								disposition: "attachment"),
+								class: "text-decoration-none text-muted" %>
+						</figcaption>
+					</figure>
+				<% end %>
 			</div>
 		</div>
 		<div class="col-12 col-md-5">

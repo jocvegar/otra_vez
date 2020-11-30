@@ -9,6 +9,7 @@ class PaymentsController < ApplicationController
 
 	def create
 		@payment = current_order.build_payment(payment_params)
+		@payment.payment_method = "transferencia"
 		if @payment.save
 			@order.update(submitted: true)
 			redirect_to gracias_path(id: @order.slug)
@@ -18,6 +19,21 @@ class PaymentsController < ApplicationController
 			# SendOrderConfirmationEmailJob.perform_later(@order.slug)
 		else
 			broadcast_errors @payment, payment_params
+		end
+	end
+
+	def compra_click
+		@payment = current_order.build_payment(payment_method: 'compra_click')
+
+		if @payment.save
+			@order.update(submitted: true)
+			redirect_to gracias_path(id: @order.slug)
+			OrderMailer.confirmation(@order.slug).deliver_later
+			OrderMailer.notify_owner(@order.slug).deliver_later
+			session.delete(:order_id)
+			# SendOrderConfirmationEmailJob.perform_later(@order.slug)
+		else
+			render :new
 		end
 	end
 

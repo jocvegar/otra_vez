@@ -7,6 +7,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+    @browser = Browser.new("Some User Agent", accept_language: "en-us")
   end
 
   def edit
