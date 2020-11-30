@@ -6,7 +6,7 @@ Orden nueva <%= @order.slug %>
 <%= admin_order_url(@order.slug) %>
 
 
-<% if @order.payment_method == "compra_click" %>
+<% if @order.payment.payment_method == "compra_click" %>
 	Esta orden es compra click! Hacer y enviar link a <%= @order.address&.telefono %>
 <% end %>
 
