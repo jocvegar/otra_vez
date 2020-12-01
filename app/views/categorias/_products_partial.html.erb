@@ -6,7 +6,7 @@
 					<%= link_to "#",
 						data: {toggle: "modal",
 							target: "#imageModal-#{product.slug}"}  do %>
-					  <%= image_tag product.main_image,
+					  <%= image_tag product.main_image.variant(resize_to_fit: [200, 200], quality: 80),
 					    class: "card-img-top px-3 py-3 rounded",
 					    style: 'height:18rem;max-width:100%;width:auto;object-fit:fill;' %>
 					<% end %>

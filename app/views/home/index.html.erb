@@ -68,7 +68,7 @@
 						<li class="splide__slide text-center">
 							<div class="splide__slide__container mb-2">
 								<% if product.main_image.attached? %>
-								  <%= image_tag product.main_image,
+								  <%= image_tag product.main_image.variant(resize_to_fit: [200, 200], quality: 80),
 								    class: "img-fluid",
 								    style: 'height:200px;width:auto' %>
 								<% else %>
