@@ -61,10 +61,21 @@
                 <% subtotal += item.total_price %>
               <% end %>
               <li class="list-group-item d-flex justify-content-between">
-                <span>Total</span>
+                <span>Envió</span>
 
+                <% if @order.shipping == 0 %>
+                  <span class="text-muted">Contra envío</span>
+                <% else %>
+                  <span class="text-muted">
+                    <%= number_to_currency(@order.shipping,
+                      unit: "Lps. ", separator: ".", delimiter: ",") %>
+                  </span>
+                <% end %>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>Total</span>
                 <strong>
-                  <%= number_to_currency(subtotal,
+                  <%= number_to_currency(subtotal + @order.shipping,
                     unit: "Lps. ", separator: ".", delimiter: ",") %>
                 </strong>
               </li>
@@ -72,8 +83,6 @@
           </div>
 
           <div class="col-md-7 col-lg-8">
-
-
             <ul class="nav nav-pills nav-fill nav-justified mb-3" id="pills-tab" role="tablist">
               <li class="nav-item" role="presentation">
                 <a class="mx-3 nav-link btn btn-outline-primary active" id="transferencia-tab" data-toggle="pill" href="#transferencia" role="tab"
@@ -196,13 +205,13 @@
                       Solicita tu link para pagar con tu tarjeta de crédit o débito:
                       <br>
                       <br>
-
                       <small>
-                        Al darle click finalizará tu compra y se te enviará un mensajito por whatsapp al <br>
-                        <strong><%= @order.address.try(:telefono) %></strong>, por favor está pendiente.
+                        Al darle click recibiras un mensaje del número <strong>9872-2191</strong> con el botón de pago para finalizar tu compra.
+                        <br>
+                        El mensaje será enviado al número
+                        <strong><%= @order.address.try(:telefono) %></strong>.
                       </small>
                       <br>
-
                      <div class="d-flex align-items-center
                        justify-content-between pt-5 pb-3">
                         <%= link_to compra_click_payments_path,

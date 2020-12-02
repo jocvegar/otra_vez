@@ -22,7 +22,8 @@ class CheckoutController < ApplicationController
 	private
 
 	def address_params
-		params.require(:address).permit(:nombre, :apellido, :direccion, :ciudad, :departamento, :pais, :telefono, :telefono_alternativo, :referencia, :notas, :correo)
+		params.require(:address).permit(:nombre, :apellido, :direccion, :ciudad, :departamento,
+			:municipio, :pais, :telefono, :telefono_alternativo, :referencia, :notas, :correo)
 	end
 
 	def set_order

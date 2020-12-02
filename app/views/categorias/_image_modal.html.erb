@@ -12,7 +12,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= image_tag product.main_image,
+        <%= image_tag product.main_image.variant(resize_to_limit: [500, 500], quality: 90),
           class: "rounded mx-auto d-block",
           style: 'height:75vh;max-width:100%;object-fit:fill;' %>
       </div>

@@ -9,6 +9,7 @@ class Order < ApplicationRecord
 	has_one :payment, dependent: :destroy
 
 	before_save :set_subtotal
+	before_save :set_shipping
 
 	def subtotal
 		order_items.collect { |order_item| order_item.valid? ? (order_item.unit_price * order_item.quantity) : 0 }.sum
@@ -16,6 +17,10 @@ class Order < ApplicationRecord
 
 	def subtotal_net
 		order_items.collect { |order_item| (order_item.unit_price * order_item.quantity) }.sum
+	end
+
+	def shipping
+		address&.municipio == "distrito_central" ? 80 : 0
 	end
 
 	def remove_associations
@@ -44,6 +49,10 @@ class Order < ApplicationRecord
 
 	def set_subtotal
 		self[:subtotal] = subtotal
+	end
+
+	def set_shipping
+		self[:shipping] = shipping
 	end
 
 	def slug_it
