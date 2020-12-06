@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <div class="mb-4">
           <%= label_tag(:size, "Tamaño") %>
           <% sizes = Product.sizes.
@@ -73,13 +73,24 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-4">
         <div class="mb-4">
           <%= label_tag(:fit, "Fits like") %>
           <% sizes = Product.fits_like.
             map { |size| [size.humanize.upcase, size] } %>
           <%= f.select(:fit, options_for_select(sizes,
             :selected => f.object.fit),
+            {include_blank: true}, class: "form-select") %>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="mb-4">
+          <%= label_tag(:quality, "Calidad") %>
+          <% qualityArr = Product.quality.
+            map { |quality| [quality.capitalize, quality] } %>
+          <%= f.select(:quality, options_for_select(qualityArr,
+            :selected => f.object.quality),
             {include_blank: true}, class: "form-select") %>
         </div>
       </div>

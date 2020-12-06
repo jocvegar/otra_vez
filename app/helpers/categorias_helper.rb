@@ -14,9 +14,9 @@ module CategoriasHelper
 		link_to params.permit(:cat, :option, :open_size, :size).
 			merge(cat: params['cat'], option: params['option'], size: attribute, open_size: true),
 			class: "text-decoration-none text-dark" do
-			content_tag :li, class: "list-group-item d-flex justify-content-between align-middle" do
+			content_tag :button, class: "btn btm-sm btn #{ attribute == parameter ? 'btn-dark' : 'btn-outline-dark'} my-2" do
 				concat attribute.nil? ? "Todo" : attribute.humanize.upcase
-				concat "<i class='fas fa-check'></i>".html_safe if attribute == parameter
+				# concat "<i class='fas fa-check'></i>".html_safe if attribute == parameter
 			end
 		end
 	end

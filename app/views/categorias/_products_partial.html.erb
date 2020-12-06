@@ -32,13 +32,19 @@
 						<%= product.size.humanize.upcase %>
 					</span>
 				</p>
-				<p class="card-title font-weight-bolder d-flex justify-content-between">
+				<p class="card-title font-weight-bolder d-flex justify-content-between mb-0">
 					<span class="h6 font-weight-normal text-secondary">
 						<%= product.subcategory ? product.subcategory&.humanize : "Adulto" %>
 					</span>
 					<span class="h6 font-weight-normal text-secondary">
 						<%= product.fit ? "queda como #{ product.fit&.humanize}" : "Tamaño real"%>
 					</span>
+				</p>
+
+				<p class="card-title font-weight-bolder d-flex justify-content-between mb-0">
+					<small class="h6 font-weight-normal text-secondary">
+						<%= "(#{product.quality})" if product.quality %>
+					</small>
 				</p>
 
 				<%= form_for(order_item, remote: true) do |f| %>
@@ -61,7 +67,7 @@
 	</div>
 <% end %>
 
-<% if (!option_params.nil? || !size_params.nil?) && products.empty? %>
+<% if (!option_params.nil? || !size_params.nil?) || products.empty? %>
 	<div class="container">
 		<div class="empty-products bg-light my-5 d-flex justify-content-center align-items-center">
 			<h5 class="text-muted text-center">

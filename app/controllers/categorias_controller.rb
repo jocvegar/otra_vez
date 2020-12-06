@@ -9,6 +9,8 @@ class CategoriasController < ApplicationController
 		  	@products = Product.mujer.existing.order("created_at DESC")
 		when "otro"
 			@products = Product.otro.existing.order("created_at DESC")
+		when "youth"
+			@products = Product.youth.existing.order("created_at DESC")
 		else
 			redirect_to root_url
 		end

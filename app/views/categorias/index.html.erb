@@ -59,14 +59,14 @@
 				</div>
 				<div class="collapse <%= 'show' if params[:open_size] %>"
 					data-target="filter.sizeList">
-					<div class="card-body">
-						<ul class="list-group">
-							<%= filter_link_sizes(params[:size]) %>
-							<%  Product.sizes.each do |size| %>
-								<%= filter_link_sizes(params[:size],
-									size) %>
-							<% end %>
-						</ul>
+					<div class="card-body d-flex justify-content-evenly flex-wrap">
+						<!-- <ul class="list-group"> -->
+						<%= filter_link_sizes(params[:size]) %>
+						<%  Product.sizes.each do |size| %>
+							<%= filter_link_sizes(params[:size],
+								size) %>
+						<% end %>
+						<!-- </ul> -->
 					</div>
 				</div>
 			</div>
