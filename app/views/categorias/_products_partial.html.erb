@@ -37,13 +37,13 @@
 						<%= product.subcategory ? product.subcategory&.humanize : "Adulto" %>
 					</span>
 					<span class="h6 font-weight-normal text-secondary">
-						<%= product.fit ? "queda como #{ product.fit&.humanize}" : "Tamaño real"%>
+						<%= product.fit.present? ? "queda como #{ product.fit&.humanize}" : "Tamaño real"%>
 					</span>
 				</p>
 
 				<p class="card-title font-weight-bolder d-flex justify-content-between mb-0">
 					<small class="h6 font-weight-normal text-secondary">
-						<%= "(#{product.quality})" if product.quality %>
+						<%= "(#{product.quality})" if product.quality.present? %>
 					</small>
 				</p>
 
