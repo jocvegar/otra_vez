@@ -64,3 +64,4 @@ gem "browser", require: "browser/browser"
 gem "rollbar", "~> 3.1"
 
 gem "image_optim_rails", "~> 0.4.3"
+gem 'image_optim_pack'
