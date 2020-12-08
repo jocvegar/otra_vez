@@ -40,5 +40,19 @@ module OtraVez
     config.i18n.available_locales = [:en, :es]
     config.i18n.default_locale = :es
     config.i18n.fallbacks = true
+
+    # image optim
+    config.assets.image_optim.nice = 20
+    config.assets.image_optim.svgo = false
+    config.assets.image_optim.pngout = false
+    config.assets.image_optim.advpng = false
+    config.assets.image_optim.jhead = false
+    config.assets.image_optim.jpegtran = false
+    config.assets.image_optim.jpegrecompress = false
+    config.assets.image_optim.optipng = false
+    config.assets.image_optim.pngquant = false
+    config.assets.image_optim.gifsicle.careful = true
+    config.assets.image_optim.jpegoptim.allow_lossy = true
+    config.assets.image_optim.jpegoptim.max_quality = 85
   end
 end

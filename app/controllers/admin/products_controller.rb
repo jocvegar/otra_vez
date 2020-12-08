@@ -17,6 +17,14 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
+    if !Rails.env.development? && admin_product_params[:main_image].present?
+      path = admin_product_params[:main_image].tempfile.path
+      ImageProcessing::MiniMagick.source(path)
+        .resize_to_limit(900, 900)
+        .call(destination: path)
+      ImageOptim.new.optimize_image!(path)
+    end
+
     @product = Product.new(admin_product_params)
 
     respond_to do |format|
@@ -31,6 +39,13 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
+    if admin_product_params[:main_image].present?
+      path = admin_product_params[:main_image].tempfile.path
+      ImageProcessing::MiniMagick.source(path)
+        .resize_to_limit(900, 900)
+        .call(destination: path)
+    end
+
     respond_to do |format|
       if @product.update(admin_product_params)
         format.html { redirect_to admin_products_path, notice: 'Producto modificado' }
