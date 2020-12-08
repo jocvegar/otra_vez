@@ -131,7 +131,11 @@
         <%= link_to "Cancelar", admin_products_path, class: "btn btn-outline-danger btn-block"  %>
       </div>
       <div class="col">
-        <%= f.submit "Salvar", class: "btn btn-outline-dark btn-block" %>
+        <%= button_tag type: 'submit',
+          class: 'btn btn-outline-dark btn-block',
+          data: { disable_with: fa_spinner } do %>
+          Salvar
+        <% end %>
       </div>
     </div>
   <% end %>
