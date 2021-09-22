@@ -43,4 +43,3 @@ yarn-debug.log*
 dump.rdb
 # Ignore .DS_Store file
 .DS_Store
-
