@@ -25,7 +25,7 @@ class Order < ApplicationRecord
 
 	def remove_associations
 		# we are doing this when purchase time has expired or denied
-		self.address.destroy
+		self&.address&.destroy
 		return_products
 		self.order_items.map(&:destroy)
 	end
