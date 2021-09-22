@@ -34,4 +34,11 @@ module ApplicationHelper
 	def fa_spinner
 		'<i class="fa fa-spinner fa-pulse fa-fw"></i>'.html_safe
 	end
+
+  def device
+    agent = request.user_agent
+    return "tablet" if agent =~ /(tablet|ipad)|(android(?!.*mobile))/i
+    return "mobile" if agent =~ /Mobile/
+    return "desktop"
+  end
 end

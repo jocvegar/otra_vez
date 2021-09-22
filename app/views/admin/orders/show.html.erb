@@ -25,12 +25,12 @@
 						Order solicitada con compra click
 					</p>
 
-					<% if @browser.device.mobile? %>
+					<% if device == "mobile" %>
 					  	<a href="https://wa.me/+504<%= @order.address.telefono.tr(" \t\r\n", '').gsub(/[-!?¿¡.\/,&()]/, '') %>" target="_blank">
 					  		<%= @order.address.telefono %>
 					  	</a>
 					<% else %>
-						<a href="https://api.whatsapp.com/send?phone=+504<%= @order.address.telefono.tr(" \t\r\n", '').gsub(/[-!?¿¡.\/,&()]/, '') %>" target="_blank">
+						<a href="https://web.whatsapp.com/send?phone=+504<%= @order.address.telefono.tr(" \t\r\n", '').gsub(/[-!?¿¡.\/,&()]/, '') %>" target="_blank">
 							<%= @order.address.telefono %>
 						</a>
 					<% end %>
@@ -61,22 +61,22 @@
 			  </li>
 			  <li class="list-group-item">
 			  	<i class="text-muted mr-2 fas fa-phone"></i>
-			  	<%= @order.address.telefono %>
+			  	<%= @order&.address&.telefono %>
 			  	<% unless @order.address.telefono_alternativo.empty? %>
 			  		<%= " / #{@order.address.telefono_alternativo}" %>
 			  	<% end %>
 			  </li>
 			  <li class="list-group-item">
 			  	<i class="text-muted mr-2 fas fa-map-marked-alt"></i>
-			  	<%= @order.address.one_line_format %>
+			  	<%= @order&.address&.one_line_format %>
 			  </li>
 			  <li class="list-group-item">
 			  	<i class="text-muted mr-2 fas fa-location-arrow"></i>
-			  	<%= @order.address.referencia %>
+			  	<%= @order&.address&.referencia %>
 			  </li>
 			  <li class="list-group-item">
 			  	<i class="text-muted mr-2 fas fa-book-open"></i>
-			  	<%= @order.address.notas %>
+			  	<%= @order&.address&.notas %>
 			  </li>
 			</ul>
 		</div>
