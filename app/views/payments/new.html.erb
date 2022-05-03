@@ -3,30 +3,26 @@
   data-action="beforeunload@window->shopping#clearOnClose">
   <div id="timer" style="min-height: 3rem;"
     class="bg-primary text-white d-flex align-items-center justify-content-center">
-
     <span class= "d-none" data-target="shopping.endTimer">
       <%= @order.end_timer %>
     </span>
     <span class= "d-none" data-target="shopping.orderSlug">
       <%= @order.slug %>
     </span>
-
     <span data-target="shopping.banner">
       Tiempo restante: &nbsp;
     </span>
     <span data-target="shopping.output"></span>
-
     <div data-target="shopping.moreTime">
       <%= link_to extend_timer_path,
         method: :patch,
         class: "btn btn-outline-light btn-sm ml-5",
         data: {
           disable_with: fa_spinner} do %>
-          Más tiempo?
+        Más tiempo?
       <% end unless @order.time_extended %>
     </div>
   </div>
-
   <div class="row py-5 bg-light">
     <div class="col-12 col-md-10 offset-md-1">
       <div class="container">
@@ -34,13 +30,11 @@
           <h2 class="text-dark">Pago</h2>
           <hr>
         </div>
-
         <div class="row g-3">
           <div class="col-md-5 col-lg-4 order-md-last">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="text-dark">Total</span>
             </h4>
-
             <ul class="list-group mb-3">
               <% @order_items.each do |item| %>
                 <li id="check-out-order-item-<%= item.id %>"
@@ -62,7 +56,6 @@
               <% end %>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Envió</span>
-
                 <% if @order.shipping == 0 %>
                   <span class="text-muted">Contra envío</span>
                 <% else %>
@@ -81,7 +74,6 @@
               </li>
             </ul>
           </div>
-
           <div class="col-md-7 col-lg-8">
             <ul class="nav nav-pills nav-fill nav-justified mb-3" id="pills-tab" role="tablist">
               <li class="nav-item" role="presentation">
@@ -92,7 +84,6 @@
                 <a class="mx-3 nav-link btn btn-outline-primary" id="compra-click-tab" data-toggle="pill" href="#compra-click" role="tab" aria-controls="compra-click" aria-selected="false">Compra Click</a>
               </li>
             </ul>
-
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="transferencia" role="tabpanel" aria-labelledby="transferencia-tab">
                 <h4 class="my-5 text-dark">Transferencia</h4>
@@ -156,7 +147,7 @@
                         </div>
                       </div>
                     </div>
-                     <br>
+                    <br>
                     <label class="my-1 font-weight-bold">
                       Adjunta la captura con el comprobante de tu pago
                     </label>
@@ -206,13 +197,13 @@
                       <br>
                       <br>
                       <small>
-                        Al darle click recibiras un mensaje del número <strong>9872-2191</strong> con el botón de pago para finalizar tu compra.
+                        Al darle click recibiras un mensaje del número <strong>8771-0492</strong> con el botón de pago para finalizar tu compra.
                         <br>
                         El mensaje será enviado al número
                         <strong><%= @order.address.try(:telefono) %></strong>.
                       </small>
                       <br>
-                     <div class="d-flex align-items-center
+                      <div class="d-flex align-items-center
                        justify-content-between pt-5 pb-3">
                         <%= link_to compra_click_payments_path,
                           class: "btn btn-block btn-outline-secondary btn-sm",
@@ -236,7 +227,6 @@
   </div>
 </div>
 <%= render 'shared/footer' %>
-
 <script>
   $('#paymentFileUpload').on('change',function(){
     let fileName = $(this).val().replace("C:\\fakepath\\", "");
