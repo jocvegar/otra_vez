@@ -1,51 +1,59 @@
 <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
 	id="sidebarMenu" >
-	<div class="position-sticky pt-3">
-		<ul class="nav flex-column">
-			<li class="nav-item">
-				<a class="nav-link <%= active_class('/admin') %>" aria-current="page" href="/admin">
-					<i class="mr-3 fas fa-home"></i>
-					Home
-				</a>
-				<hr>
-			</li>
-			<li class="nav-item">
-				<%= link_to admin_orders_path,
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link <%= active_class('/admin') %>" aria-current="page" href="/admin">
+          <i class="mr-3 fas fa-home"></i>
+          Home
+        </a>
+        <hr>
+      </li>
+      <li class="nav-item">
+        <%= link_to admin_orders_path,
 					class: "nav-link #{active_class('/admin/orders')}" do %>
-					<i class="mr-3 fas fa-tshirt"></i>
-					Ordenes
-				<% end %>
-				<hr>
-			</li>
-			<li class="nav-item">
-				<%= link_to admin_products_path,
+          <i class="mr-3 fas fa-tshirt"></i>
+          Ordenes
+        <% end %>
+        <hr>
+      </li>
+      <li class="nav-item">
+        <%= link_to admin_products_path,
 					class: "nav-link #{active_class('/admin/products')}" do %>
-					<i class="mr-3 fas fa-tshirt"></i>
-					Productos
-				<% end %>
-				<hr>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#" >
-					<i class="mr-3 fas fa-user-astronaut"></i>
-					Clientes
-				</a>
-				<hr>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">
-					<i class="mr-3 fas fa-pizza-slice"></i>
-					Reportes
-				</a>
-				<hr>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/">
-					<i class="mr-3 fas fa-store-alt"></i>
-					Tienda
-				</a>
-				<hr>
-			</li>
-		</ul>
-	</div>
+          <i class="mr-3 fas fa-tshirt"></i>
+          Productos
+        <% end %>
+        <hr>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >
+          <i class="mr-3 fas fa-user-astronaut"></i>
+          Clientes
+        </a>
+        <hr>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="mr-3 fas fa-pizza-slice"></i>
+          Reportes
+        </a>
+        <hr>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">
+          <i class="mr-3 fas fa-store-alt"></i>
+          Tienda
+        </a>
+        <hr>
+      </li>
+      <li class="nav-item">
+        <%= link_to admin_bulk_tasks_path,
+					class: "nav-link #{active_class('/admin/bulk_tasks')}" do %>
+          <i class="mr-3 fas fa-tshirt"></i>
+          Actualizaciones Masivas
+        <% end %>
+        <hr>
+      </li>
+    </ul>
+  </div>
 </nav>
