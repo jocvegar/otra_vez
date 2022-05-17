@@ -1,0 +1,26 @@
+<%= form_with(url: "/admin/bulk_tasks", method: "post") do |f| %>
+  <div class="row mb-4">
+    <div class="col-12 col-md-6 mb-4">
+      <%= label_tag(:category, "Categoría") %>
+      <% categories = Product.categories.
+            map { |category| [category.humanize, category] } %>
+      <%= f.select(:category, options_for_select(categories),
+          {include_blank: true},
+          class: "form-select", required: true) %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= label_tag(:price, "Precio") %>
+      <%= f.number_field :price, class: "form-control",
+            required: true, min: 0 %>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col">
+      <%= button_tag type: 'submit',
+          class: 'btn btn-outline-dark btn-block',
+          data: { disable_with: fa_spinner } do %>
+        Salvar
+      <% end %>
+    </div>
+  </div>
+<% end %>

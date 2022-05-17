@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 		resources :products
 		resources :soldout_products, only: [:index]
 		resources :orders
+		resources :bulk_tasks
 		namespace :orders do
 			get 'shipped/index'
 			get 'declined/index'
